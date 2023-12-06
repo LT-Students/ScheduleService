@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{3E99E06A-1EE9-41F3-98F6-8D9D2A9CE320}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.editorconfig = .editorconfig
+		Common.Configurations.targets = Common.Configurations.targets
+		.github\workflows\main.yml = .github\workflows\main.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9BE3685B-9E88-4F12-ACCE-A95E46BC1112}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{93C84017-7967-4D04-8DE1-A2CA0EFFC3D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService", "src\ScheduleService\ScheduleService.csproj", "{4AC4AF62-F802-4B69-8099-5F60C54490B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Business", "src\ScheduleService.Business\ScheduleService.Business.csproj", "{2024FD91-6BED-4E82-B07A-167D0FC853D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Broker", "src\ScheduleService.Broker\ScheduleService.Broker.csproj", "{A64BEDD9-7CD5-4157-B72C-2BE0FB080121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Data", "src\ScheduleService.Data\ScheduleService.Data.csproj", "{25D0C0A1-0B88-4CC1-93A3-1E1146B5C88D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Data.Provider", "src\ScheduleService.Data.Provider\ScheduleService.Data.Provider.csproj", "{6E4B1DD4-3ECA-4B22-9178-AAE2F566B063}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Data.Provider.MsSql.Ef", "src\ScheduleService.Data.Provider.MsSql.Ef\ScheduleService.Data.Provider.MsSql.Ef.csproj", "{6931AEBF-4FA0-457B-B932-2639C935C029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Mappers", "src\ScheduleService.Mappers\ScheduleService.Mappers.csproj", "{E61864CE-F059-4D04-BD72-FF698D08C044}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Models.Db", "src\ScheduleService.Models.Db\ScheduleService.Models.Db.csproj", "{D570DAF1-A84C-40BB-BEDC-275EC3D28A5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Models.Dto", "src\ScheduleService.Models.Dto\ScheduleService.Models.Dto.csproj", "{0C2C0775-20A8-46A8-8385-9A787830FF0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Validation", "src\ScheduleService.Validation\ScheduleService.Validation.csproj", "{DBA79C36-25C3-4A94-8E50-2D55DF2CD5A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleService.Validation.UnitTests", "test\ScheduleService.Validation.UnitTests\ScheduleService.Validation.UnitTests.csproj", "{402BBE48-C704-473D-B153-AA086778E3B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AC4AF62-F802-4B69-8099-5F60C54490B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC4AF62-F802-4B69-8099-5F60C54490B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC4AF62-F802-4B69-8099-5F60C54490B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC4AF62-F802-4B69-8099-5F60C54490B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2024FD91-6BED-4E82-B07A-167D0FC853D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2024FD91-6BED-4E82-B07A-167D0FC853D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2024FD91-6BED-4E82-B07A-167D0FC853D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2024FD91-6BED-4E82-B07A-167D0FC853D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A64BEDD9-7CD5-4157-B72C-2BE0FB080121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A64BEDD9-7CD5-4157-B72C-2BE0FB080121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A64BEDD9-7CD5-4157-B72C-2BE0FB080121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A64BEDD9-7CD5-4157-B72C-2BE0FB080121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25D0C0A1-0B88-4CC1-93A3-1E1146B5C88D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25D0C0A1-0B88-4CC1-93A3-1E1146B5C88D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25D0C0A1-0B88-4CC1-93A3-1E1146B5C88D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25D0C0A1-0B88-4CC1-93A3-1E1146B5C88D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E4B1DD4-3ECA-4B22-9178-AAE2F566B063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E4B1DD4-3ECA-4B22-9178-AAE2F566B063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E4B1DD4-3ECA-4B22-9178-AAE2F566B063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E4B1DD4-3ECA-4B22-9178-AAE2F566B063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6931AEBF-4FA0-457B-B932-2639C935C029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6931AEBF-4FA0-457B-B932-2639C935C029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6931AEBF-4FA0-457B-B932-2639C935C029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6931AEBF-4FA0-457B-B932-2639C935C029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61864CE-F059-4D04-BD72-FF698D08C044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61864CE-F059-4D04-BD72-FF698D08C044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61864CE-F059-4D04-BD72-FF698D08C044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61864CE-F059-4D04-BD72-FF698D08C044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D570DAF1-A84C-40BB-BEDC-275EC3D28A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D570DAF1-A84C-40BB-BEDC-275EC3D28A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D570DAF1-A84C-40BB-BEDC-275EC3D28A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D570DAF1-A84C-40BB-BEDC-275EC3D28A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2C0775-20A8-46A8-8385-9A787830FF0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C2C0775-20A8-46A8-8385-9A787830FF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C2C0775-20A8-46A8-8385-9A787830FF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C2C0775-20A8-46A8-8385-9A787830FF0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA79C36-25C3-4A94-8E50-2D55DF2CD5A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA79C36-25C3-4A94-8E50-2D55DF2CD5A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA79C36-25C3-4A94-8E50-2D55DF2CD5A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA79C36-25C3-4A94-8E50-2D55DF2CD5A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402BBE48-C704-473D-B153-AA086778E3B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402BBE48-C704-473D-B153-AA086778E3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402BBE48-C704-473D-B153-AA086778E3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402BBE48-C704-473D-B153-AA086778E3B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4AC4AF62-F802-4B69-8099-5F60C54490B8} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{2024FD91-6BED-4E82-B07A-167D0FC853D2} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{A64BEDD9-7CD5-4157-B72C-2BE0FB080121} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{25D0C0A1-0B88-4CC1-93A3-1E1146B5C88D} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{6E4B1DD4-3ECA-4B22-9178-AAE2F566B063} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{6931AEBF-4FA0-457B-B932-2639C935C029} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{E61864CE-F059-4D04-BD72-FF698D08C044} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{D570DAF1-A84C-40BB-BEDC-275EC3D28A5F} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{0C2C0775-20A8-46A8-8385-9A787830FF0B} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{DBA79C36-25C3-4A94-8E50-2D55DF2CD5A8} = {9BE3685B-9E88-4F12-ACCE-A95E46BC1112}
+		{402BBE48-C704-473D-B153-AA086778E3B7} = {93C84017-7967-4D04-8DE1-A2CA0EFFC3D8}
+	EndGlobalSection
+EndGlobal
