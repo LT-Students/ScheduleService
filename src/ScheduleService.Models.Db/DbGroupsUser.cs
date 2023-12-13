@@ -10,6 +10,8 @@ public class DbGroupsUser
 
   public Guid GroupId { get; set; }
   public Guid UserId { get; set; }
+
+  public DbGroup Group { get; set; }
 }
 
 public class DbGroupsUserConfiguration : IEntityTypeConfiguration<DbGroupsUser>
@@ -21,5 +23,11 @@ public class DbGroupsUserConfiguration : IEntityTypeConfiguration<DbGroupsUser>
 
     builder
       .HasKey(a => new { a.GroupId, a.UserId });
+
+    builder
+      .HasOne(u => u.Group)
+      .WithMany(o => o.GroupsUsers)
+      .HasForeignKey(u => u.GroupId)
+      .HasPrincipalKey(o => o.Id);
   }
 }
