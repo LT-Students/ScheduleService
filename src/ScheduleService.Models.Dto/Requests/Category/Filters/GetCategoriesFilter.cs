@@ -1,4 +1,5 @@
 ﻿namespace LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category.Filters;
-public class FindCategoriesFilter
+
+public class GetCategoriesFilter
 {
 }

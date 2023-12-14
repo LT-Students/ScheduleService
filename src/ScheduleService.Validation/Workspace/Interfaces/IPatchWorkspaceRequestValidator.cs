@@ -1,11 +1,8 @@
 ﻿using FluentValidation;
-using LT.DigitalOffice.Kernel.Attributes;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
 
-namespace LT.DigitalOffice.ScheduleService.Validation.Workspace.Interfaces
+namespace LT.DigitalOffice.ScheduleService.Validation.Workspace.Interfaces;
+
+public interface IPatchWorkspaceRequestValidator : IValidator<PatchWorkspaceRequest>
 {
-  [AutoInject]
-  internal interface IPatchWorkspaceRequestValidator : IValidator<PatchWorkspaceRequest>
-  {
-  }
 }

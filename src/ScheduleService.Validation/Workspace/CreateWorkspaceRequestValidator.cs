@@ -5,6 +5,7 @@ using LT.DigitalOffice.ScheduleService.Validation.Workspace.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
+namespace LT.DigitalOffice.ScheduleService.Validation.Workspace;
 public class CreateWorkspaceRequestValidator : AbstractValidator<CreateWorkspaceRequestValidator>, ICreateWorkspaceRequestValidator
 {
   public ValidationResult Validate(CreateWorkspaceRequest instance)

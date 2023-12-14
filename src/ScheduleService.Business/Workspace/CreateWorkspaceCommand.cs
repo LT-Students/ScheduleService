@@ -3,13 +3,12 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Workspace
+namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
+
+public class CreateWorkspaceCommand : ICreateWorkspaceCommand
 {
-  public class CreateWorkspaceCommand : ICreateWorkspaceCommand
+  public Task<IActionResult> ExecuteAsync(CreateWorkspaceRequest request)
   {
-    public Task<IActionResult> ExecuteAsync(CreateWorkspaceRequest request)
-    {
-      throw new System.NotImplementedException();
-    }
+    throw new System.NotImplementedException();
   }
 }

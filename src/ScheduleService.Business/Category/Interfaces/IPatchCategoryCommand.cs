@@ -1,13 +1,13 @@
 ﻿using LT.DigitalOffice.Kernel.Attributes;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Category.Interfaces
+namespace LT.DigitalOffice.ScheduleService.Business.Category.Interfaces;
+
+[AutoInject]
+public interface IPatchCategoryCommand
 {
-  [AutoInject]
-  public interface IPatchCategoryCommand
-  {
-    Task<IActionResult> ExecuteAsync(PatchCategoryRequest request);
-    }
-}
+  Task<IActionResult> ExecuteAsync(Guid id, PatchCategoryRequest request);
+ }

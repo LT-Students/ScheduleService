@@ -1,13 +1,12 @@
 ﻿using LT.DigitalOffice.Kernel.Attributes;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category.Filters;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Category.Interfaces;
 
 [AutoInject]
-public interface IPutCategoryCommand
+public interface IGetCategoriesCommand
 {
-  Task<IActionResult> ExecuteAsync(Guid id, PutCategoryRequest request);
+  Task<IActionResult> ExecuteAsync(GetCategoriesFilter request);
 }
