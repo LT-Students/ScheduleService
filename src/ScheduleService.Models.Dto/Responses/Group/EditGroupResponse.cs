@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LT.DigitalOffice.ScheduleService.Models.Dto.Responses.Groups;
+namespace LT.DigitalOffice.ScheduleService.Models.Dto.Responses.Group;
 
 public class EditGroupResponse
 {
