@@ -3,7 +3,7 @@ using System;
 
 namespace LT.DigitalOffice.ScheduleService.Models.Dto.Responses.Groups;
 
-public class CreateGroupsResponse
+public class CreateGroupResponse
 {
   Guid GroupId { get; set; }
 
