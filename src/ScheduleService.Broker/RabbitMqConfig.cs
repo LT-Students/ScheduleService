@@ -9,6 +9,6 @@ public class RabbitMqConfig : BaseRabbitMqConfig
   #endregion
 
   #region request endpoints
-  
+
   #endregion
 }
