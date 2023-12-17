@@ -3,6 +3,6 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category;
 
 namespace LT.DigitalOffice.ScheduleService.Validation.Category.Interfaces;
 
-public interface IPatchCategoryRequestValidator : IValidator<PatchCategoryRequest>
+public interface IUpdateCategoryRequestValidator : IValidator<UpdateCategoryRequest>
 {
 }

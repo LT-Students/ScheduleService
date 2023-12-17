@@ -1,5 +1,5 @@
 ﻿using LT.DigitalOffice.Kernel.Attributes;
-using Microsoft.AspNetCore.Mvc;
+using LT.DigitalOffice.Kernel.Responses;
 using System;
 using System.Threading.Tasks;
 
@@ -8,5 +8,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Category.Interfaces;
 [AutoInject]
 public interface IGetCategoryCommand
 {
-  Task<IActionResult> ExecuteAsync(Guid id);
+  Task<OperationResultResponse<Guid?>> ExecuteAsync(Guid id);
 }

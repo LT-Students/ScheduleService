@@ -3,6 +3,6 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
 
 namespace LT.DigitalOffice.ScheduleService.Validation.Workspace.Interfaces;
 
-public interface IPutWorkspaceRequestValidator : IValidator<PutWorkspaceRequest>
+public interface IEditWorkspaceRequestValidator : IValidator<EditWorkspaceRequest>
 {
 }

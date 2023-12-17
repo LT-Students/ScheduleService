@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
 
-public class CreateWorkspaceCommand : ICreateWorkspaceCommand
+public class UpdateWorkspaceCommand : IUpdateWorkspaceCommand
 {
-    public Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateWorkspaceRequest request)
+    public Task<OperationResultResponse<Guid?>> ExecuteAsync(Guid id, UpdateWorkspaceRequest request)
     {
         throw new NotImplementedException();
     }

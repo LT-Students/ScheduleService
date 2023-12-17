@@ -4,15 +4,18 @@ using LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace.Filters;
 using System;
+using LT.DigitalOffice.Kernel.Responses;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace LT.DigitalOffice.DepartmentService.Controllers;
 
 [Route("[controller]")]
 [ApiController]
-public class WorkspaceController : ControllerBase
+public class WorkspacesController : ControllerBase
 {
-  [HttpGet("get/{id}")]
-  public async Task<IActionResult> GetAsync(
+  [HttpGet("{id}")]
+  public async Task<OperationResultResponse<Guid?>> GetAsync(
     [FromServices] IGetWorkspaceCommand command,
     [FromRoute] Guid id)
   {
@@ -20,8 +23,8 @@ public class WorkspaceController : ControllerBase
     return await command.ExecuteAsync(id);
   }
 
-  [HttpGet("get")]
-  public async Task<IActionResult> GetAllAsync(
+  [HttpGet()]
+  public async Task<FindResultResponse<WorkspaceInfo>> GetAllAsync(
     [FromServices] IGetWorkspacesCommand command,
     [FromQuery] GetWorkspacesFilter request)
   {
@@ -29,8 +32,8 @@ public class WorkspaceController : ControllerBase
     return await command.ExecuteAsync(request);
   }
 
-  [HttpPost("create")]
-  public async Task<IActionResult> CreateAsync(
+  [HttpPost()]
+  public async Task<OperationResultResponse<Guid?>> CreateAsync(
     [FromServices] ICreateWorkspaceCommand command,
     [FromBody] CreateWorkspaceRequest request)
   {
@@ -38,28 +41,28 @@ public class WorkspaceController : ControllerBase
     return await command.ExecuteAsync(request);
   }
 
-  [HttpPatch("edit/{id}")]
-  public async Task<IActionResult> PatchAsync(
-    [FromServices] IPatchWorkspaceCommand command,
-    [FromBody] PatchWorkspaceRequest request,
+  [HttpPatch("{id}")]
+  public async Task<OperationResultResponse<Guid?>> EditAsync(
+    [FromServices] IEditWorkspaceCommand command,
+    [FromBody] JsonPatchDocument<EditWorkspaceRequest> request,
     [FromRoute] Guid id)
   {
 
     return await command.ExecuteAsync(id, request);
   }
 
-  [HttpPut("update/{id}")]
-  public async Task<IActionResult> PutAsync(
-    [FromServices] IPutWorkspaceCommand command,
-    [FromBody] PutWorkspaceRequest request,
+  [HttpPut("{id}")]
+  public async Task<OperationResultResponse<Guid?>> UpdateAsync(
+    [FromServices] IUpdateWorkspaceCommand command,
+    [FromBody] UpdateWorkspaceRequest request,
     [FromRoute] Guid id)
   {
 
     return await command.ExecuteAsync(id, request);
   }
 
-  [HttpDelete("delete/{id}")]
-  public async Task<IActionResult> DeleteAsync(
+  [HttpDelete("{id}")]
+  public async Task<OperationResultResponse<Guid?>> DeleteAsync(
     [FromServices] IDeleteWorkspaceCommand command,
     [FromRoute] Guid id)
   {

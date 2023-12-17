@@ -1,6 +1,7 @@
 ﻿using LT.DigitalOffice.Kernel.Attributes;
+using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
-using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
@@ -8,5 +9,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 [AutoInject]
 public interface ICreateWorkspaceCommand
 {
-  Task<IActionResult> ExecuteAsync(CreateWorkspaceRequest request);
+  Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateWorkspaceRequest request);
 }

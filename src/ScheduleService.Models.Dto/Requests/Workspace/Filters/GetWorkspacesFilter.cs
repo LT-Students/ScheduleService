@@ -1,5 +1,7 @@
-﻿namespace LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace.Filters;
+﻿using LT.DigitalOffice.Kernel.Requests;
 
-public class GetWorkspacesFilter
+namespace LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace.Filters;
+
+public record GetWorkspacesFilter : BaseFindFilter
 {
 }

@@ -4,15 +4,18 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category;
 using LT.DigitalOffice.ScheduleService.Business.Category.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category.Filters;
 using System;
+using LT.DigitalOffice.Kernel.Responses;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace LT.DigitalOffice.DepartmentService.Controllers;
 
 [Route("[controller]")]
 [ApiController]
-public class CategoryController : ControllerBase
+public class CategoriesController : ControllerBase
 {
-  [HttpGet("get/{id}")]
-  public async Task<IActionResult> GetAsync(
+  [HttpGet("{id}")]
+  public async Task<OperationResultResponse<Guid?>> GetAsync(
     [FromServices] IGetCategoryCommand command,
     [FromRoute] Guid id)
     {
@@ -20,8 +23,8 @@ public class CategoryController : ControllerBase
       return await command.ExecuteAsync(id);
     }
 
-  [HttpGet("get")]
-  public async Task<IActionResult> GetAllAsync(
+  [HttpGet()]
+  public async Task<FindResultResponse<CategoryInfo>> GetAllAsync(
     [FromServices] IGetCategoriesCommand command,
     [FromQuery] GetCategoriesFilter request)
   {
@@ -29,8 +32,8 @@ public class CategoryController : ControllerBase
     return await command.ExecuteAsync(request);
   }
 
-  [HttpPost("create")]
-  public async Task<IActionResult> CreateAsync(
+  [HttpPost()]
+  public async Task<OperationResultResponse<Guid?>> CreateAsync(
     [FromServices] ICreateCategoryCommand command,
     [FromBody] CreateCategoryRequest request)
   {
@@ -38,28 +41,28 @@ public class CategoryController : ControllerBase
     return await command.ExecuteAsync(request);
   }
 
-  [HttpPatch("edit/{id}")]
-  public async Task<IActionResult> PatchAsync(
-    [FromServices] IPatchCategoryCommand command,
-    [FromBody] PatchCategoryRequest request,
+  [HttpPatch("{id}")]
+  public async Task<OperationResultResponse<Guid?>> EditAsync(
+    [FromServices] IEditCategoryCommand command,
+    [FromBody] JsonPatchDocument<EditCategoryRequest> request,
     [FromRoute] Guid id)
   {
 
     return await command.ExecuteAsync(id, request);
   }
 
-  [HttpPut("update/{id}")]
-  public async Task<IActionResult> PutAsync(
-    [FromServices] IPutCategoryCommand command,
-    [FromBody] PutCategoryRequest request,
+  [HttpPut("{id}")]
+  public async Task<OperationResultResponse<Guid?>> UpdateAsync(
+    [FromServices] IUpdateCategoryCommand command,
+    [FromBody] UpdateCategoryRequest request,
     [FromRoute] Guid id)
   {
 
     return await command.ExecuteAsync(id, request);
   }
 
-  [HttpDelete("delete/{id}")]
-  public async Task<IActionResult> DeleteAsync(
+  [HttpDelete("{id}")]
+  public async Task<OperationResultResponse<Guid?>> DeleteAsync(
     [FromServices] IDeleteCategoryCommand command,
     [FromRoute] Guid id)
   {
