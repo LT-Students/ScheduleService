@@ -24,12 +24,12 @@ public class DbCategoryConfiguration : IEntityTypeConfiguration<DbCategory>
       .ToTable(DbCategory.TableName);
 
     builder
-      .HasKey(a => a.Id);
+      .HasKey(c => c.Id);
 
     builder
-      .HasMany(u => u.CategoriesTask)
-      .WithOne(o => o.Category)
-      .HasForeignKey(u => u.CategoryId)
-      .HasPrincipalKey(o => o.Id);
+      .HasMany(c => c.CategoriesTask)
+      .WithOne(ct => ct.Category)
+      .HasForeignKey(ct => ct.CategoryId)
+      .HasPrincipalKey(c => c.Id);
   }
 }

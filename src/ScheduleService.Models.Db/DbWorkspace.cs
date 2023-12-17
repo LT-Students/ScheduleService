@@ -24,16 +24,16 @@ public class DbWorkspaceConfiguration : IEntityTypeConfiguration<DbWorkspace>
       .ToTable(DbWorkspace.TableName);
 
     builder
-      .HasKey(a => a.Id);
+      .HasKey(w => w.Id);
 
     builder
-      .HasMany(u => u.Tasks)
-      .WithOne(o => o.Workspace)
-      .HasForeignKey(u => u.WorkspaceId)
-      .HasPrincipalKey(o => o.Id);
+      .HasMany(w => w.Tasks)
+      .WithOne(t => t.Workspace)
+      .HasForeignKey(t => t.WorkspaceId)
+      .HasPrincipalKey(w => w.Id);
 
     builder
-      .HasMany(u => u.Groups)
-      .WithOne(o => o.Workspace);
+      .HasMany(w => w.Groups)
+      .WithOne(g => g.Workspace);
   }
 }

@@ -25,18 +25,18 @@ public class DbGroupConfiguration : IEntityTypeConfiguration<DbGroup>
       .ToTable(DbGroup.TableName);
 
     builder
-      .HasKey(a => a.Id);
+      .HasKey(g => g.Id);
 
     builder
-      .HasMany(u => u.Tasks)
-      .WithOne(o => o.Group)
-      .HasForeignKey(u => u.GroupId)
-      .HasPrincipalKey(o => o.Id);
+      .HasMany(g => g.Tasks)
+      .WithOne(t => t.Group)
+      .HasForeignKey(t => t.GroupId)
+      .HasPrincipalKey(g => g.Id);
 
     builder
-      .HasMany(u => u.GroupsUsers)
-      .WithOne(o => o.Group)
-      .HasForeignKey(u => u.GroupId)
-      .HasPrincipalKey(o => o.Id);
+      .HasMany(g => g.GroupsUsers)
+      .WithOne(gu => gu.Group)
+      .HasForeignKey(gu => gu.GroupId)
+      .HasPrincipalKey(g => g.Id);
   }
 }

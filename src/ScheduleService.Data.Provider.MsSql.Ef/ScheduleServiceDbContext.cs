@@ -7,10 +7,11 @@ namespace LT.DigitalOffice.ScheduleService.Data.Provider.MsSql.Ef;
 
 public class ScheduleServiceDbContext : DbContext, IDataProvider
 {
+  public DbSet<DbTask> Tasks { get; set; }
   public DbSet<DbCategory> Categories { get; set; }
+  public DbSet<DbCategoriesTask> CategoriesTasks { get; set; }
   public DbSet<DbGroup> Groups { get; set; }
   public DbSet<DbGroupsUser> GroupsUsers { get; set; }
-  public DbSet<DbTask> Tasks { get; set; }
   public DbSet<DbWorkspace> Workspaces { get; set; }
 
   public ScheduleServiceDbContext(DbContextOptions<ScheduleServiceDbContext> options)

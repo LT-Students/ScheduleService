@@ -23,18 +23,18 @@ public class DbCategoriesTaskConfiguration : IEntityTypeConfiguration<DbCategori
       .ToTable(DbCategoriesTask.TableName);
 
     builder
-      .HasKey(a => new { a.TaskId, a.CategoryId });
+      .HasKey(ct => new { ct.TaskId, ct.CategoryId });
 
     builder
-      .HasOne(u => u.Task)
-      .WithMany(o => o.Categories)
-      .HasForeignKey(u => u.TaskId)
-      .HasPrincipalKey(o => o.Id);
+      .HasOne(ct => ct.Task)
+      .WithMany(t => t.Categories)
+      .HasForeignKey(ct => ct.TaskId)
+      .HasPrincipalKey(t => t.Id);
 
     builder
-      .HasOne(u => u.Category)
-      .WithMany(o => o.CategoriesTask)
-      .HasForeignKey(u => u.CategoryId)
-      .HasPrincipalKey(o => o.Id);
+      .HasOne(ct => ct.Category)
+      .WithMany(c => c.CategoriesTask)
+      .HasForeignKey(ct => ct.CategoryId)
+      .HasPrincipalKey(c => c.Id);
   }
 }

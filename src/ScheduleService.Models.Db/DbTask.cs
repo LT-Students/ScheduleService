@@ -29,24 +29,24 @@ public class DbTaskConfiguration : IEntityTypeConfiguration<DbTask>
       .ToTable(DbTask.TableName);
 
     builder
-      .HasKey(a => a.Id);
+      .HasKey(t => t.Id);
 
     builder
-      .HasOne(u => u.Group)
-      .WithMany(o => o.Tasks)
-      .HasForeignKey(u => u.GroupId)
-      .HasPrincipalKey(o => o.Id);
+      .HasOne(t => t.Group)
+      .WithMany(g => g.Tasks)
+      .HasForeignKey(t => t.GroupId)
+      .HasPrincipalKey(g => g.Id);
 
     builder
-      .HasOne(u => u.Workspace)
-      .WithMany(o => o.Tasks)
-      .HasForeignKey(u => u.WorkspaceId)
-      .HasPrincipalKey(o => o.Id);
+      .HasOne(t => t.Workspace)
+      .WithMany(w => w.Tasks)
+      .HasForeignKey(t => t.WorkspaceId)
+      .HasPrincipalKey(w => w.Id);
 
     builder
-      .HasMany(u => u.Categories)
-      .WithOne(o => o.Task)
-      .HasForeignKey(u => u.TaskId)
-      .HasPrincipalKey(o => o.Id);
+      .HasMany(t => t.Categories)
+      .WithOne(ct => ct.Task)
+      .HasForeignKey(ct => ct.TaskId)
+      .HasPrincipalKey(t => t.Id);
   }
 }

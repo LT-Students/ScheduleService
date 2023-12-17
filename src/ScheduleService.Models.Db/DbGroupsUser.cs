@@ -22,12 +22,12 @@ public class DbGroupsUserConfiguration : IEntityTypeConfiguration<DbGroupsUser>
       .ToTable(DbGroupsUser.TableName);
 
     builder
-      .HasKey(a => new { a.GroupId, a.UserId });
+      .HasKey(gu => new { gu.GroupId, gu.UserId });
 
     builder
-      .HasOne(u => u.Group)
-      .WithMany(o => o.GroupsUsers)
-      .HasForeignKey(u => u.GroupId)
-      .HasPrincipalKey(o => o.Id);
+      .HasOne(gu => gu.Group)
+      .WithMany(g => g.GroupsUsers)
+      .HasForeignKey(gu => gu.GroupId)
+      .HasPrincipalKey(g => g.Id);
   }
 }
