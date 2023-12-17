@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
+using System.Collections.Generic;
 
 namespace LT.DigitalOffice.ScheduleService.Models.Db;
 
@@ -11,6 +12,8 @@ public class DbCategory
   public Guid Id { get; set; }
   public string Name { get; set; }
   public string Color { get; set; }
+
+  public IList<DbCategoriesTask> CategoriesTask { get; set; } = new List<DbCategoriesTask>();
 }
 
 public class DbCategoryConfiguration : IEntityTypeConfiguration<DbCategory>
@@ -22,5 +25,11 @@ public class DbCategoryConfiguration : IEntityTypeConfiguration<DbCategory>
 
     builder
       .HasKey(a => a.Id);
+
+    builder
+      .HasMany(u => u.CategoriesTask)
+      .WithOne(o => o.Category)
+      .HasForeignKey(u => u.CategoryId)
+      .HasPrincipalKey(o => o.Id);
   }
 }

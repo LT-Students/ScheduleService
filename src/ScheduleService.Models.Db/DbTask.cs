@@ -18,7 +18,7 @@ public class DbTask
 
   public DbGroup Group { get; set; }
   public DbWorkspace Workspace { get; set; }
-  public IList<DbCategory> Categories { get; set; } = new List<DbCategory>();
+  public IList<DbCategoriesTask> Categories { get; set; } = new List<DbCategoriesTask>();
 }
 
 public class DbTaskConfiguration : IEntityTypeConfiguration<DbTask>
@@ -41,6 +41,12 @@ public class DbTaskConfiguration : IEntityTypeConfiguration<DbTask>
       .HasOne(u => u.Workspace)
       .WithMany(o => o.Tasks)
       .HasForeignKey(u => u.WorkspaceId)
+      .HasPrincipalKey(o => o.Id);
+
+    builder
+      .HasMany(u => u.Categories)
+      .WithOne(o => o.Task)
+      .HasForeignKey(u => u.TaskId)
       .HasPrincipalKey(o => o.Id);
   }
 }
