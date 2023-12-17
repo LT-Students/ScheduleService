@@ -4,5 +4,5 @@ public class DeleteGroupResponse
 {
   public bool Result { get; set; }
 
-  public string Erorr {  get; set; }
+  public string Error {  get; set; }
 }

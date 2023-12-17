@@ -28,7 +28,7 @@ public class GroupsController
   }
 
   [HttpGet("findAll")]
-  public async Task<OperationResultResponse<FindGroupsResponse>> CreateAsync(
+  public async Task<OperationResultResponse<FindGroupsResponse>> FindsAsync(
     [FromServices] IFindGroupsCommand command,
     [FromBody] FindGroupsRequest request)
   {
@@ -36,7 +36,7 @@ public class GroupsController
   }
 
   [HttpDelete]
-  public async Task<OperationResultResponse<DeleteGroupResponse>> CreateAsync(
+  public async Task<OperationResultResponse<DeleteGroupResponse>> DeleteAsync(
     [FromServices] IDeleteGroupCommand command,
     [FromBody] DeleteGroupRequest request)
   {
@@ -44,7 +44,7 @@ public class GroupsController
   }
 
   [HttpPatch]
-  public async Task<OperationResultResponse<UpdateGroupResponse>> CreateAsync(
+  public async Task<OperationResultResponse<UpdateGroupResponse>> UpdateAsync(
   [FromServices] IUpdateGroupCommand command,
   [FromBody] UpdateGroupRequest request)
   {
@@ -52,7 +52,7 @@ public class GroupsController
   }
 
   [HttpPut]
-  public async Task<OperationResultResponse<EditGroupResponse>> CreateAsync(
+  public async Task<OperationResultResponse<EditGroupResponse>> EditAsync(
   [FromServices] IEditGroupCommand command,
   [FromBody] EditGroupRequest request)
   {
