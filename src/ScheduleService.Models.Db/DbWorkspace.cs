@@ -11,8 +11,6 @@ public class DbWorkspace
   public const string TableName = "Workspaces";
 
   public Guid Id { get; set; }
-
-  [MaxLength(100)]
   public string Name { get; set; }
 
   public IList<DbGroup> Groups { get; set; } = new List<DbGroup>();
