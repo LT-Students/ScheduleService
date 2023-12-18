@@ -5,7 +5,6 @@ using System;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Task;
-using Azure;
 using Microsoft.AspNetCore.JsonPatch;
 
 namespace LT.DigitalOffice.ScheduleService.Controllers
@@ -22,44 +21,46 @@ namespace LT.DigitalOffice.ScheduleService.Controllers
       return await command.ExecuteAsync(request);
     }
 
-    [HttpGet("get")]
+    [HttpGet()]
     public async Task<OperationResultResponse<GetTasksResponse>> GetAllAsync(
       [FromBody] GetTasksRequest request,
-      [FromServices] GetTasksCommand command)
+      [FromServices] GetAllTasksCommand command)
     {
       return await command.ExecuteAsync(request);
     }
 
-    [HttpGet("get")]
+    [HttpGet("{id}")]
     public async Task<OperationResultResponse<GetTaskResponse>> GetAsync(
-      [FromBody] GetTaskRequest request,
+      [FromRoute] Guid id,
       [FromServices] GetTaskCommand command)
     {
-      return await command.ExecuteAsync(request);
+      return await command.ExecuteAsync(id);
     }
 
-    [HttpPatch("edit")]
+    [HttpPatch("{id}")]
     public async Task<OperationResultResponse<EditTaskResponse>> EditAsync(
+      [FromRoute] Guid id,
       [FromBody] EditTaskRequest request,
       [FromServices] EditTaskCommand command)
     {
-      return await command.ExecuteAsync(request);
+      return await command.ExecuteAsync(request, id);
     }
 
-    [HttpPatch("edit")]
+    [HttpPatch("{id}")]
     public async Task<OperationResultResponse<EditTaskResponse>> EditAsync(
+      [FromRoute] Guid id,
       [FromBody] JsonPatchDocument<EditTaskRequest> request,
       [FromServices] EditTaskCommand command)
     {
-      return await command.ExecuteAsync(request);
+      return await command.ExecuteAsync(request, id);
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete("{id}")]
     public async Task<OperationResultResponse<DeleteTaskResponse>> DeleteAsync(
-      [FromBody] DeleteTaskRequest request,
+      [FromRoute] Guid id,
       [FromServices] DeleteTaskCommand command)
     {
-      return await command.ExecuteAsync(request);
+      return await command.ExecuteAsync(id);
     }
   }
 }

@@ -10,7 +10,7 @@ namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces
   [AutoInject]
   public interface IDeleteTaskCommand
   {
-    Task<OperationResultResponse<DeleteTaskResponse>> ExecuteAsync(DeleteTaskRequest request);
+    Task<OperationResultResponse<DeleteTaskResponse>> ExecuteAsync(Guid id);
   }
 }
 

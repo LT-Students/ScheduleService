@@ -19,12 +19,12 @@ namespace LT.DigitalOffice.ScheduleService.Business.Task
       _repository = repository;
     }
 
-    public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(EditTaskRequest request)
+    public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(EditTaskRequest request, Guid id)
     {
       throw new NotImplementedException();
     }
 
-    public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(JsonPatchDocument<EditTaskRequest> request)
+    public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(JsonPatchDocument<EditTaskRequest> request, Guid id)
     {
       throw new NotImplementedException();
     }

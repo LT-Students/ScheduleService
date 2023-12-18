@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces
 {
   [AutoInject]
-  public interface IGetTasksCommand
+  public interface IGetAllTasksCommand
   {
     Task<OperationResultResponse<GetTasksResponse>> ExecuteAsync(GetTasksRequest request);
   }

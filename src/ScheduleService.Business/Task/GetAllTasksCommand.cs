@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Task
 {
-  public class GetTasksCommand : IGetTasksCommand
+  public class GetAllTasksCommand : IGetAllTasksCommand
   {
     private readonly ITaskRepository _repository;
 
-    public GetTasksCommand(
+    public GetAllTasksCommand(
       ITaskRepository repository)
     {
       _repository = repository;

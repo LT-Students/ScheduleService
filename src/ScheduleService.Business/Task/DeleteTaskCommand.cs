@@ -18,7 +18,7 @@ namespace LT.DigitalOffice.ScheduleService.Business.Task
       _repository = repository;
     }
 
-    public Task<OperationResultResponse<DeleteTaskResponse>> ExecuteAsync(DeleteTaskRequest request)
+    public Task<OperationResultResponse<DeleteTaskResponse>> ExecuteAsync(Guid id)
     {
       throw new NotImplementedException();
     }
