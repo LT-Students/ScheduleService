@@ -11,6 +11,7 @@ public class DbGroup
 
   public Guid Id { get; set; }
   public string Name { get; set; }
+  public Guid WorkspaceId { get; set; }
 
   public DbWorkspace Workspace { get; set; }
   public IList<DbGroupsUser> GroupsUsers { get; set; } = new List<DbGroupsUser>();
@@ -41,6 +42,8 @@ public class DbGroupConfiguration : IEntityTypeConfiguration<DbGroup>
 
     builder
       .HasOne(g => g.Workspace)
-      .WithMany(w => w.Groups);
+      .WithMany(w => w.Groups)
+      .HasForeignKey(g => g.WorkspaceId)
+      .HasPrincipalKey(w => w.Id);
   }
 }

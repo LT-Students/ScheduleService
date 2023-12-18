@@ -7,7 +7,6 @@ namespace LT.DigitalOffice.ScheduleService.Data.Provider.MsSql.Ef.Migrations;
 
 [DbContext(typeof(ScheduleServiceDbContext))]
 [Migration("20231217210755_InitialCreate")]
-
 public class InitialCreate : Migration
 {
   #region Create tables

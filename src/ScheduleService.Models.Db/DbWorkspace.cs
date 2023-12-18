@@ -34,6 +34,8 @@ public class DbWorkspaceConfiguration : IEntityTypeConfiguration<DbWorkspace>
 
     builder
       .HasMany(w => w.Groups)
-      .WithOne(g => g.Workspace);
+      .WithOne(g => g.Workspace)
+      .HasForeignKey(g => g.WorkspaceId)
+      .HasPrincipalKey(w => w.Id);
   }
 }
