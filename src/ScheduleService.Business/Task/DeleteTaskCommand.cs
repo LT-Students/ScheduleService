@@ -6,22 +6,21 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Task
+namespace LT.DigitalOffice.ScheduleService.Business.Task;
+
+public class DeleteTaskCommand : IDeleteTaskCommand
 {
-  public class DeleteTaskCommand : IDeleteTaskCommand
+  private readonly ITaskRepository _repository;
+
+  public DeleteTaskCommand(
+    ITaskRepository repository)
   {
-    private readonly ITaskRepository _repository;
+    _repository = repository;
+  }
 
-    public DeleteTaskCommand(
-      ITaskRepository repository)
-    {
-      _repository = repository;
-    }
-
-    public Task<OperationResultResponse<DeleteTaskResponse>> ExecuteAsync(Guid id)
-    {
-      throw new NotImplementedException();
-    }
+  public Task<OperationResultResponse<DeleteTaskResponse>> ExecuteAsync(Guid id)
+  {
+    throw new NotImplementedException();
   }
 }
 

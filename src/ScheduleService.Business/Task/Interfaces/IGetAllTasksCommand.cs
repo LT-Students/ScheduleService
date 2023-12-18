@@ -4,11 +4,10 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces
+namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
+
+[AutoInject]
+public interface IGetAllTasksCommand
 {
-  [AutoInject]
-  public interface IGetAllTasksCommand
-  {
-    Task<OperationResultResponse<GetTasksResponse>> ExecuteAsync(GetTasksRequest request);
-  }
+  Task<OperationResultResponse<GetTasksResponse>> ExecuteAsync(GetTasksRequest request);
 }

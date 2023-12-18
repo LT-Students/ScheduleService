@@ -1,9 +1,8 @@
-﻿namespace LT.DigitalOffice.ScheduleService.Models.Dto.Enums
+﻿namespace LT.DigitalOffice.ScheduleService.Models.Dto.Enums;
+
+public enum TypeOfTask
 {
-  public enum TypeOfTask
-  {
-    WorkCall = 0,
-    Task = 1
-  }
+  WorkCall = 0,
+  Task = 1
 }
 

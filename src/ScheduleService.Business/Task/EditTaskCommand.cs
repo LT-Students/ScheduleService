@@ -7,27 +7,26 @@ using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Task
+namespace LT.DigitalOffice.ScheduleService.Business.Task;
+
+public class EditTaskCommand : IEditTaskCommand
 {
-  public class EditTaskCommand : IEditTaskCommand
+  private readonly ITaskRepository _repository;
+
+  public EditTaskCommand(
+    ITaskRepository repository)
   {
-    private readonly ITaskRepository _repository;
+    _repository = repository;
+  }
 
-    public EditTaskCommand(
-      ITaskRepository repository)
-    {
-      _repository = repository;
-    }
+  public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(EditTaskRequest request, Guid id)
+  {
+    throw new NotImplementedException();
+  }
 
-    public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(EditTaskRequest request, Guid id)
-    {
-      throw new NotImplementedException();
-    }
-
-    public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(JsonPatchDocument<EditTaskRequest> request, Guid id)
-    {
-      throw new NotImplementedException();
-    }
+  public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(JsonPatchDocument<EditTaskRequest> request, Guid id)
+  {
+    throw new NotImplementedException();
   }
 }
 

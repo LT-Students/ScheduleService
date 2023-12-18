@@ -15,8 +15,8 @@ namespace LT.DigitalOffice.ScheduleService.Controllers
   {
     [HttpPost("create")]
     public async Task<OperationResultResponse<Guid?>> CreateAsync(
-    [FromBody] CreateTaskRequest request,
-    [FromServices] CreateTaskCommand command)
+      [FromBody] CreateTaskRequest request,
+      [FromServices] CreateTaskCommand command)
     {
       return await command.ExecuteAsync(request);
     }

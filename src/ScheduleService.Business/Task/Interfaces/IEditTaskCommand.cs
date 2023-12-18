@@ -6,12 +6,11 @@ using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces
+namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
+
+[AutoInject]
+public interface IEditTaskCommand
 {
-  [AutoInject]
-  public interface IEditTaskCommand
-  {
-    Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(JsonPatchDocument<EditTaskRequest> request, Guid id);
-    Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(EditTaskRequest request, Guid id);
-  }
+  Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(JsonPatchDocument<EditTaskRequest> request, Guid id);
+  Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(EditTaskRequest request, Guid id);
 }

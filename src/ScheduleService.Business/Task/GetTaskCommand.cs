@@ -6,22 +6,21 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Task
+namespace LT.DigitalOffice.ScheduleService.Business.Task;
+
+public class GetTaskCommand : IGetTaskCommand
 {
-  public class GetTaskCommand : IGetTaskCommand
+  private readonly ITaskRepository _repository;
+
+  public GetTaskCommand(
+    ITaskRepository repository)
   {
-    private readonly ITaskRepository _repository;
+    _repository = repository;
+  }
 
-    public GetTaskCommand(
-      ITaskRepository repository)
-    {
-      _repository = repository;
-    }
-
-    public Task<OperationResultResponse<GetTaskResponse>> ExecuteAsync(Guid id)
-    {
-      throw new NotImplementedException();
-    }
+  public Task<OperationResultResponse<GetTaskResponse>> ExecuteAsync(Guid id)
+  {
+    throw new NotImplementedException();
   }
 }
 

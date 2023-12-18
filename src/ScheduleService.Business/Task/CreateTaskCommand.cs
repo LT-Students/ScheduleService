@@ -6,24 +6,23 @@ using LT.DigitalOffice.ScheduleService.Validation.Task.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Task
+namespace LT.DigitalOffice.ScheduleService.Business.Task;
+
+public class CreateTaskCommand : ICreateTaskCommand
 {
-  public class CreateTaskCommand : ICreateTaskCommand
+  private readonly ITaskRepository _repository;
+  private readonly ICreateTaskRequestValidator _validator;
+
+  public CreateTaskCommand(
+    ITaskRepository repository,
+    ICreateTaskRequestValidator validator)
   {
-    private readonly ITaskRepository _repository;
-    private readonly ICreateTaskRequestValidator _validator;
+    _repository = repository;
+    _validator = validator;
+  }
 
-    public CreateTaskCommand(
-      ITaskRepository repository,
-      ICreateTaskRequestValidator validator)
-    {
-      _repository = repository;
-      _validator = validator;
-    }
-
-    public Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateTaskRequest request)
-    {
-      throw new NotImplementedException();
-    }
+  public Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateTaskRequest request)
+  {
+    throw new NotImplementedException();
   }
 }
