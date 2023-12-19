@@ -4,6 +4,6 @@ using LT.DigitalOffice.ScheduleService.Validation.Task.Interfaces;
 
 namespace LT.DigitalOffice.ScheduleService.Validation.Task;
 
-public class PatchTaskValidator : AbstractValidator<EditTaskRequest>, IPatchTaskRequestValidator
+public class EditTaskValidator : AbstractValidator<EditTaskRequest>, IEditTaskRequestValidator
 {
 }

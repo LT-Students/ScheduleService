@@ -2,7 +2,6 @@
 using LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Threading.Tasks;
@@ -19,12 +18,7 @@ public class EditTaskCommand : IEditTaskCommand
     _repository = repository;
   }
 
-  public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(EditTaskRequest request, Guid id)
-  {
-    throw new NotImplementedException();
-  }
-
-  public Task<OperationResultResponse<EditTaskResponse>> ExecuteAsync(JsonPatchDocument<EditTaskRequest> request, Guid id)
+  public Task<OperationResultResponse<bool>> ExecuteAsync(JsonPatchDocument<EditTaskRequest> request, Guid id)
   {
     throw new NotImplementedException();
   }

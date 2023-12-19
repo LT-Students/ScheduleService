@@ -1,8 +1,6 @@
 ﻿using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 using System;
 using System.Threading.Tasks;
 
@@ -18,7 +16,7 @@ public class DeleteTaskCommand : IDeleteTaskCommand
     _repository = repository;
   }
 
-  public Task<OperationResultResponse<DeleteTaskResponse>> ExecuteAsync(Guid id)
+  public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
   {
     throw new NotImplementedException();
   }
