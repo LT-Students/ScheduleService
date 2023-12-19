@@ -4,19 +4,18 @@ using System.Threading.Tasks;
 using System;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Data.Interfaces
+namespace LT.DigitalOffice.ScheduleService.Data.Interfaces;
+
+[AutoInject]
+public interface ITaskRepository
 {
-  [AutoInject]
-  public interface ITaskRepository
-  {
-    Task<Guid?> CreateAsync();
+  Task<Guid?> CreateAsync();
 
-    Task FindAsync(GetTasksFilter filter);
+  Task FindAsync(GetTasksFilter filter);
 
-    Task GetAsync(Guid taskId);
+  Task GetAsync(Guid taskId);
 
-    Task<bool> EditAsync(Guid taskId, EditTaskRequest request);
+  Task<bool> EditAsync(Guid taskId, EditTaskRequest request);
 
-    Task<bool> RemoveAsync(Guid taskId);
-  }
+  Task<bool> RemoveAsync(Guid taskId);
 }
