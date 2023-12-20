@@ -10,6 +10,7 @@ using System;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Task;
+
 public class UpdateTaskCommand : IUpdateTaskCommand
 {
   private readonly IHttpContextAccessor _httpContextAccessor;

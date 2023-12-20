@@ -17,10 +17,10 @@ public class DeleteTaskCommand : IDeleteTaskCommand
   private readonly IAccessValidator _accessValidator;
 
   public DeleteTaskCommand(
-   IHttpContextAccessor httpContextAccessor,
-   ITaskRepository repository,
-   IResponseCreator responseCreator,
-   IAccessValidator accessValidator)
+    IHttpContextAccessor httpContextAccessor,
+    ITaskRepository repository,
+    IResponseCreator responseCreator,
+    IAccessValidator accessValidator)
   {
     _httpContextAccessor = httpContextAccessor;
     _repository = repository;
