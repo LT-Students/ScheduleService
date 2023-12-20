@@ -10,8 +10,8 @@ public class DbGroup
   public const string TableName = "Groups";
 
   public Guid Id { get; set; }
-  public string Name { get; set; }
   public Guid WorkspaceId { get; set; }
+  public string Name { get; set; }
 
   public DbWorkspace Workspace { get; set; }
   public IList<DbGroupsUser> GroupsUsers { get; set; } = new List<DbGroupsUser>();

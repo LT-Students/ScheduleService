@@ -23,7 +23,6 @@ public class InitialCreate : Migration
       constraints: table =>
       {
         table.PrimaryKey($"PK_{DbGroup.TableName}", x => x.Id);
-        //table.UniqueConstraint($"UX_{DbGroup.TableName}_Name_unique", x => x.Name);
       });
   }
 
@@ -54,6 +53,7 @@ public class InitialCreate : Migration
       constraints: table =>
       {
         table.PrimaryKey($"PK_{DbWorkspace.TableName}", x => x.Id);
+        table.UniqueConstraint($"UС_{DbWorkspace.TableName}_Name_unique", x => x.Name);
       });
   }
 
@@ -70,6 +70,7 @@ public class InitialCreate : Migration
       constraints: table =>
       {
         table.PrimaryKey($"PK_{DbCategory.TableName}", x => x.Id);
+        table.UniqueConstraint($"UС_{DbCategory.TableName}_Name_unique", x => x.Name);
       });
   }
 
@@ -80,11 +81,11 @@ public class InitialCreate : Migration
       columns: table => new
       {
         Id = table.Column<Guid>(nullable: false),
+        GroupId = table.Column<Guid>(nullable: false),
+        WorkspaceId = table.Column<Guid>(nullable: false),
         Name = table.Column<string>(nullable: false, maxLength: 20),
         Description = table.Column<string>(nullable: false, maxLength: 300),
         Type = table.Column<int>(nullable: false),
-        GroupId = table.Column<Guid>(nullable: false),
-        WorkspaceId = table.Column<Guid>(nullable: false),
       },
       constraints: table =>
       {

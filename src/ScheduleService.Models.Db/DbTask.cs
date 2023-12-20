@@ -10,11 +10,11 @@ public class DbTask
   public const string TableName = "Tasks";
 
   public Guid Id { get; set; }
+  public Guid GroupId { get; set; }
+  public Guid WorkspaceId { get; set; }
   public string Name { get; set; }
   public string Description { get; set; }
   public int Type { get; set; } //enum
-  public Guid GroupId { get; set; }
-  public Guid WorkspaceId { get; set; }
 
   public DbGroup Group { get; set; }
   public DbWorkspace Workspace { get; set; }
