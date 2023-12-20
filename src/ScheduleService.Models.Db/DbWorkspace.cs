@@ -11,6 +11,11 @@ public class DbWorkspace
 
   public Guid Id { get; set; }
   public string Name { get; set; }
+  public Guid CreatedBy { get; set; }
+  public DateTime CreatedAtUtc { get; set; }
+  public Guid ModifiedBy { get; set; }
+  public DateTime ModifiedAtUtc { get; set; }
+  public bool IsActive { get; set; }
 
   public IList<DbGroup> Groups { get; set; } = new List<DbGroup>();
   public IList<DbTask> Tasks { get; set; } = new List<DbTask>();

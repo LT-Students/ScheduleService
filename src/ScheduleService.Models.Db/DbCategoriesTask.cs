@@ -10,6 +10,8 @@ public class DbCategoriesTask
 
   public Guid TaskId { get; set; }
   public Guid CategoryId { get; set; }
+  public Guid CreatedBy { get; set; }
+  public DateTime CreatedAtUtc { get; set; }
 
   public DbTask Task { get; set; }
   public DbCategory Category { get; set; }

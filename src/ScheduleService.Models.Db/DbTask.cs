@@ -14,7 +14,12 @@ public class DbTask
   public Guid WorkspaceId { get; set; }
   public string Name { get; set; }
   public string Description { get; set; }
-  public int Type { get; set; } //enum
+  public int Type { get; set; }
+  public Guid CreatedBy { get; set; }
+  public DateTime CreatedAtUtc { get; set; }
+  public Guid ModifiedBy { get; set; }
+  public DateTime ModifiedAtUtc { get; set; }
+  public bool IsActive { get; set; }
 
   public DbGroup Group { get; set; }
   public DbWorkspace Workspace { get; set; }

@@ -12,6 +12,11 @@ public class DbGroup
   public Guid Id { get; set; }
   public Guid WorkspaceId { get; set; }
   public string Name { get; set; }
+  public Guid CreatedBy { get; set; }
+  public DateTime CreatedAtUtc { get; set; }
+  public Guid ModifiedBy { get; set; }
+  public DateTime ModifiedAtUtc { get; set; }
+  public bool IsActive { get; set; }
 
   public DbWorkspace Workspace { get; set; }
   public IList<DbGroupsUser> GroupsUsers { get; set; } = new List<DbGroupsUser>();
