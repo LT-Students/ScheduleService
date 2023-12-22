@@ -10,8 +10,6 @@ public class DbGroupsUser
 
   public Guid GroupId { get; set; }
   public Guid UserId { get; set; }
-  public Guid CreatedBy { get; set; }
-  public DateTime CreatedAtUtc { get; set; }
 
   public DbGroup Group { get; set; }
 }
