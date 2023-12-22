@@ -20,4 +20,6 @@ public interface IDataProvider : IBaseDataProvider
   DbSet<DbGroupsUser> GroupsUsers { get; set; }
 
   DbSet<DbWorkspace> Workspaces { get; set; }
+
+  DbSet<DbGroupsTask> GroupsTasks { get; set; }
 }

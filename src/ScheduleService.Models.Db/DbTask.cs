@@ -21,9 +21,9 @@ public class DbTask
   public DateTime ModifiedAtUtc { get; set; }
   public bool IsActive { get; set; }
 
-  public DbGroup Group { get; set; }
   public DbWorkspace Workspace { get; set; }
   public IList<DbCategoriesTask> Categories { get; set; } = new List<DbCategoriesTask>();
+  public IList<DbGroupsTask> Groups { get; set; } = new List<DbGroupsTask>();
 }
 
 public class DbTaskConfiguration : IEntityTypeConfiguration<DbTask>
@@ -37,8 +37,8 @@ public class DbTaskConfiguration : IEntityTypeConfiguration<DbTask>
       .HasKey(t => t.Id);
 
     builder
-      .HasOne(t => t.Group)
-      .WithMany(g => g.Tasks)
+      .HasMany(t => t.Groups)
+      .WithOne(g => g.Task)
       .HasForeignKey(t => t.GroupId)
       .HasPrincipalKey(g => g.Id);
 

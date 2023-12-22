@@ -20,7 +20,7 @@ public class DbGroup
 
   public DbWorkspace Workspace { get; set; }
   public IList<DbGroupsUser> GroupsUsers { get; set; } = new List<DbGroupsUser>();
-  public IList<DbTask> Tasks { get; set; } = new List<DbTask>();
+  public IList<DbGroupsTask> Tasks { get; set; } = new List<DbGroupsTask>();
 }
 
 public class DbGroupConfiguration : IEntityTypeConfiguration<DbGroup>

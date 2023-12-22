@@ -13,6 +13,7 @@ public class ScheduleServiceDbContext : DbContext, IDataProvider
   public DbSet<DbGroup> Groups { get; set; }
   public DbSet<DbGroupsUser> GroupsUsers { get; set; }
   public DbSet<DbWorkspace> Workspaces { get; set; }
+  public DbSet<DbGroupsTask> GroupsTasks { get; set; }
 
   public ScheduleServiceDbContext(DbContextOptions<ScheduleServiceDbContext> options)
     : base(options)

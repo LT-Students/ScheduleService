@@ -93,6 +93,21 @@ public class InitialCreate : Migration
       });
   }
 
+  private void CreateTableGroupsTasks(MigrationBuilder migrationBuilder)
+  {
+    migrationBuilder.CreateTable(
+      name: DbGroupsTask.TableName,
+      columns: table => new
+      {
+        GroupId = table.Column<Guid>(nullable: false),
+        TaskId = table.Column<Guid>(nullable: false),
+      },
+      constraints: table =>
+      {
+        table.PrimaryKey($"PK_{DbGroupsTask.TableName}", x => new { x.TaskId, x.GroupId });
+      });
+  }
+
   private void CreateTableCategoriesTasks(MigrationBuilder migrationBuilder)
   {
     migrationBuilder.CreateTable(
@@ -122,6 +137,8 @@ public class InitialCreate : Migration
 
     CreateTableTasks(migrationBuilder);
 
+    CreateTableGroupsTasks(migrationBuilder);
+
     CreateTableCategoriesTasks(migrationBuilder);
   }
 
@@ -136,6 +153,8 @@ public class InitialCreate : Migration
     migrationBuilder.DropTable(DbCategory.TableName);
 
     migrationBuilder.DropTable(DbTask.TableName);
+
+    migrationBuilder.DropTable(DbGroupsTask.TableName);
 
     migrationBuilder.DropTable(DbCategoriesTask.TableName);
   }
