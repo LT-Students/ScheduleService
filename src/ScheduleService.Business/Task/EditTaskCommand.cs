@@ -21,11 +21,11 @@ public class EditTaskCommand : IEditTaskCommand
   private readonly IAccessValidator _accessValidator;
 
   public EditTaskCommand(
-   IHttpContextAccessor httpContextAccessor,
-   ITaskRepository repository,
-   IEditTaskRequestValidator validator,
-   IResponseCreator responseCreator,
-   IAccessValidator accessValidator)
+    IHttpContextAccessor httpContextAccessor,
+    ITaskRepository repository,
+    IEditTaskRequestValidator validator,
+    IResponseCreator responseCreator,
+    IAccessValidator accessValidator)
   {
     _httpContextAccessor = httpContextAccessor;
     _repository = repository;

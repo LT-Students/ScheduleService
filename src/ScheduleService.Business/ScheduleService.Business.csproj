@@ -4,6 +4,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ScheduleService.Data\ScheduleService.Data.csproj" />
+    <ProjectReference Include="..\ScheduleService.Mappers\ScheduleService.Mappers.csproj" />
     <ProjectReference Include="..\ScheduleService.Models.Dto\ScheduleService.Models.Dto.csproj" />
     <ProjectReference Include="..\ScheduleService.Validation\ScheduleService.Validation.csproj" />
   </ItemGroup>

@@ -14,8 +14,8 @@ public class GetTaskCommand : IGetTaskCommand
   private readonly IResponseCreator _responseCreator;
 
   public GetTaskCommand(
-   ITaskRepository repository,
-   IResponseCreator responseCreator)
+    ITaskRepository repository,
+    IResponseCreator responseCreator)
   {
     _repository = repository;
     _responseCreator = responseCreator;

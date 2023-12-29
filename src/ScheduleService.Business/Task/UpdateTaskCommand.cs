@@ -20,11 +20,11 @@ public class UpdateTaskCommand : IUpdateTaskCommand
   private readonly IAccessValidator _accessValidator;
 
   public UpdateTaskCommand(
-   IHttpContextAccessor httpContextAccessor,
-   ITaskRepository repository,
-   IEditTaskRequestValidator validator,
-   IResponseCreator responseCreator,
-   IAccessValidator accessValidator)
+    IHttpContextAccessor httpContextAccessor,
+    ITaskRepository repository,
+    IEditTaskRequestValidator validator,
+    IResponseCreator responseCreator,
+    IAccessValidator accessValidator)
   {
     _httpContextAccessor = httpContextAccessor;
     _repository = repository;
