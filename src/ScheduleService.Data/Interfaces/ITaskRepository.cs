@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
+using LT.DigitalOffice.ScheduleService.Models.Db;
 
 namespace LT.DigitalOffice.ScheduleService.Data.Interfaces;
 
 [AutoInject]
 public interface ITaskRepository
 {
-  Task<Guid?> CreateAsync();
+  Task<Guid?> CreateAsync(DbTask dbTask);
 
   Task FindAsync(GetTasksFilter filter);
 
