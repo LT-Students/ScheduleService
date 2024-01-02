@@ -1,4 +1,5 @@
 ﻿using LT.DigitalOffice.ScheduleService.Data.Interfaces;
+using LT.DigitalOffice.ScheduleService.Models.Db;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
 using System;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace LT.DigitalOffice.ScheduleService.Data;
 
 public class TaskRepository : ITaskRepository
 {
-  public Task<Guid?> CreateAsync()
+  public Task<Guid?> CreateAsync(DbTask dbTask)
   {
     throw new NotImplementedException();
   }
