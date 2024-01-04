@@ -9,5 +9,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Category.Interfaces;
 [AutoInject]
 public interface IUpdateCategoryCommand
 {
-  Task<OperationResultResponse<Guid?>> ExecuteAsync(Guid id, UpdateCategoryRequest request);
+  Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, UpdateCategoryRequest request);
 }

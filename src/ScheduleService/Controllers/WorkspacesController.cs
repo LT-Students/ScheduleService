@@ -7,6 +7,7 @@ using System;
 using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 using Microsoft.AspNetCore.JsonPatch;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 
 namespace LT.DigitalOffice.DepartmentService.Controllers;
 
@@ -15,7 +16,7 @@ namespace LT.DigitalOffice.DepartmentService.Controllers;
 public class WorkspacesController : ControllerBase
 {
   [HttpGet("{id}")]
-  public async Task<OperationResultResponse<Guid?>> GetAsync(
+  public async Task<OperationResultResponse<WorkspaceResponse>> GetAsync(
     [FromServices] IGetWorkspaceCommand command,
     [FromRoute] Guid id)
   {
@@ -23,7 +24,7 @@ public class WorkspacesController : ControllerBase
     return await command.ExecuteAsync(id);
   }
 
-  [HttpGet()]
+  [HttpGet]
   public async Task<FindResultResponse<WorkspaceInfo>> GetAllAsync(
     [FromServices] IGetWorkspacesCommand command,
     [FromQuery] GetWorkspacesFilter request)
@@ -32,41 +33,37 @@ public class WorkspacesController : ControllerBase
     return await command.ExecuteAsync(request);
   }
 
-  [HttpPost()]
+  [HttpPost]
   public async Task<OperationResultResponse<Guid?>> CreateAsync(
     [FromServices] ICreateWorkspaceCommand command,
     [FromBody] CreateWorkspaceRequest request)
   {
-
     return await command.ExecuteAsync(request);
   }
 
   [HttpPatch("{id}")]
-  public async Task<OperationResultResponse<Guid?>> EditAsync(
+  public async Task<OperationResultResponse<bool>> EditAsync(
     [FromServices] IEditWorkspaceCommand command,
     [FromBody] JsonPatchDocument<EditWorkspaceRequest> request,
     [FromRoute] Guid id)
   {
-
     return await command.ExecuteAsync(id, request);
   }
 
   [HttpPut("{id}")]
-  public async Task<OperationResultResponse<Guid?>> UpdateAsync(
+  public async Task<OperationResultResponse<bool>> UpdateAsync(
     [FromServices] IUpdateWorkspaceCommand command,
     [FromBody] UpdateWorkspaceRequest request,
     [FromRoute] Guid id)
   {
-
     return await command.ExecuteAsync(id, request);
   }
 
   [HttpDelete("{id}")]
-  public async Task<OperationResultResponse<Guid?>> DeleteAsync(
+  public async Task<OperationResultResponse<bool>> DeleteAsync(
     [FromServices] IDeleteWorkspaceCommand command,
     [FromRoute] Guid id)
   {
-
     return await command.ExecuteAsync(id);
   }
 }

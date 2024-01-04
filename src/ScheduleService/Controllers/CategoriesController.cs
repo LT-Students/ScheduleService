@@ -7,6 +7,7 @@ using System;
 using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 using Microsoft.AspNetCore.JsonPatch;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 
 namespace LT.DigitalOffice.DepartmentService.Controllers;
 
@@ -15,58 +16,52 @@ namespace LT.DigitalOffice.DepartmentService.Controllers;
 public class CategoriesController : ControllerBase
 {
   [HttpGet("{id}")]
-  public async Task<OperationResultResponse<Guid?>> GetAsync(
+  public async Task<OperationResultResponse<CategoryResponse>> GetAsync(
     [FromServices] IGetCategoryCommand command,
     [FromRoute] Guid id)
     {
-
       return await command.ExecuteAsync(id);
     }
 
-  [HttpGet()]
+  [HttpGet]
   public async Task<FindResultResponse<CategoryInfo>> GetAllAsync(
     [FromServices] IGetCategoriesCommand command,
     [FromQuery] GetCategoriesFilter request)
   {
-
     return await command.ExecuteAsync(request);
   }
 
-  [HttpPost()]
+  [HttpPost]
   public async Task<OperationResultResponse<Guid?>> CreateAsync(
     [FromServices] ICreateCategoryCommand command,
     [FromBody] CreateCategoryRequest request)
   {
-
     return await command.ExecuteAsync(request);
   }
 
   [HttpPatch("{id}")]
-  public async Task<OperationResultResponse<Guid?>> EditAsync(
+  public async Task<OperationResultResponse<bool>> EditAsync(
     [FromServices] IEditCategoryCommand command,
     [FromBody] JsonPatchDocument<EditCategoryRequest> request,
     [FromRoute] Guid id)
   {
-
     return await command.ExecuteAsync(id, request);
   }
 
   [HttpPut("{id}")]
-  public async Task<OperationResultResponse<Guid?>> UpdateAsync(
+  public async Task<OperationResultResponse<bool>> UpdateAsync(
     [FromServices] IUpdateCategoryCommand command,
     [FromBody] UpdateCategoryRequest request,
     [FromRoute] Guid id)
   {
-
     return await command.ExecuteAsync(id, request);
   }
 
   [HttpDelete("{id}")]
-  public async Task<OperationResultResponse<Guid?>> DeleteAsync(
+  public async Task<OperationResultResponse<bool>> DeleteAsync(
     [FromServices] IDeleteCategoryCommand command,
     [FromRoute] Guid id)
   {
-
     return await command.ExecuteAsync(id);
   }
 }

@@ -2,4 +2,5 @@
 
 public class EditWorkspaceRequest
 {
+  public string Name { get; set; }
 }

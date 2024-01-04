@@ -8,5 +8,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 [AutoInject]
 public interface IDeleteWorkspaceCommand
 {
-  Task<OperationResultResponse<Guid?>> ExecuteAsync(Guid id);
+  Task<OperationResultResponse<bool>> ExecuteAsync(Guid id);
 }

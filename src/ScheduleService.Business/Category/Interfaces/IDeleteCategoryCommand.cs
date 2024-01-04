@@ -8,5 +8,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Category.Interfaces;
 [AutoInject]
 public interface IDeleteCategoryCommand
 {
-  Task<OperationResultResponse<Guid?>> ExecuteAsync(Guid id);
+  Task<OperationResultResponse<bool>> ExecuteAsync(Guid id);
 }

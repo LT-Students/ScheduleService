@@ -10,5 +10,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 [AutoInject]
 public interface IEditWorkspaceCommand
 {
-  Task<OperationResultResponse<Guid?>> ExecuteAsync(Guid id, JsonPatchDocument<EditWorkspaceRequest> request);
+  Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, JsonPatchDocument<EditWorkspaceRequest> request);
 }

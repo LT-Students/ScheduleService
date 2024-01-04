@@ -2,4 +2,5 @@
 
 public class UpdateWorkspaceRequest
 {
+  public string Name { get; set; }
 }

@@ -10,5 +10,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Category.Interfaces;
 [AutoInject]
 public interface IEditCategoryCommand
 {
-  Task<OperationResultResponse<Guid?>> ExecuteAsync(Guid id, JsonPatchDocument<EditCategoryRequest> request);
+  Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, JsonPatchDocument<EditCategoryRequest> request);
 }
