@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ScheduleService.Broker\ScheduleService.Broker.csproj" />
+    <ProjectReference Include="..\ScheduleService.Business\ScheduleService.Business.csproj" />
+    <ProjectReference Include="..\ScheduleService.Models.Dto\ScheduleService.Models.Dto.csproj" />
   </ItemGroup>
 
 </Project>

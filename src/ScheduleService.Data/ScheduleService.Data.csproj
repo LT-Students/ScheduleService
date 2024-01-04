@@ -2,4 +2,8 @@
 
   <Import Project="$(ProjectDir)..\..\Common.Configurations.targets" />
 
+  <ItemGroup>
+    <ProjectReference Include="..\ScheduleService.Models.Db\ScheduleService.Models.Db.csproj" />
+  </ItemGroup>
+
 </Project>
