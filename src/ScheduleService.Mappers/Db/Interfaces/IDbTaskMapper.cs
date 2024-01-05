@@ -8,5 +8,5 @@ namespace LT.DigitalOffice.ScheduleService.Mappers.Db.Interfaces;
 [AutoInject]
 public interface IDbTaskMapper
 {
-  DbTask Map(CreateTaskRequest request, Guid id);
+  DbTask Map(CreateTaskRequest request, Guid userId);
 }

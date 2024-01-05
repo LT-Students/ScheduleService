@@ -15,7 +15,7 @@ public class DbTaskMapper
     _httpContextAccessor = httpContextAccessor;
   }
 
-  public DbTask Map(CreateTaskRequest request, Guid id)
+  public DbTask Map(CreateTaskRequest request, Guid userId)
   {
     return request is null
       ? null
@@ -27,7 +27,7 @@ public class DbTaskMapper
         WorkspaceId = request.WorkspaceId,
         Description = request.Description,
         Type = (int)request.Type,
-        CreatedBy = id,
+        CreatedBy = userId,
         CreatedAtUtc = DateTime.UtcNow,
         IsActive = true
       };
