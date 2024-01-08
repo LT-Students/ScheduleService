@@ -17,7 +17,7 @@ public class CreateCategoryCommand : ICreateCategoryCommand
   }
 
   public Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateCategoryRequest request)
-    {
-      throw new NotImplementedException();
-    }
+  {
+    throw new NotImplementedException();
+  }
 }

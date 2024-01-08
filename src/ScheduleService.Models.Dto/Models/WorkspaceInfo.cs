@@ -1,6 +1,7 @@
 ﻿using System;
 
 namespace LT.DigitalOffice.ScheduleService.Models.Dto.Models;
+
 public class WorkspaceInfo
 {
   public Guid Id { get; set; }

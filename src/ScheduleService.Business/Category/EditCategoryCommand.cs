@@ -18,7 +18,7 @@ public class EditCategoryCommand : IEditCategoryCommand
   }
 
   public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, JsonPatchDocument<EditCategoryRequest> request)
-    {
-      throw new NotImplementedException();
-    }
+  {
+    throw new NotImplementedException();
+  }
 }

@@ -18,7 +18,7 @@ public class EditWorkspaceCommand : IEditWorkspaceCommand
   }
 
   public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, JsonPatchDocument<EditWorkspaceRequest> request)
-    {
-      throw new NotImplementedException();
-    }
+  {
+    throw new NotImplementedException();
+  }
 }

@@ -17,7 +17,7 @@ public class UpdateWorkspaceCommand : IUpdateWorkspaceCommand
   }
 
   public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, UpdateWorkspaceRequest request)
-    {
-      throw new NotImplementedException();
-    }
+  {
+    throw new NotImplementedException();
+  }
 }

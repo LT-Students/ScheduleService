@@ -17,7 +17,7 @@ public class GetWorkspaceCommand : IGetWorkspaceCommand
   }
 
   public Task<OperationResultResponse<WorkspaceResponse>> ExecuteAsync(Guid id)
-    {
-      throw new NotImplementedException();
-    }
+  {
+    throw new NotImplementedException();
+  }
 }

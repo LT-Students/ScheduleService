@@ -17,7 +17,7 @@ public class CreateWorkspaceCommand : ICreateWorkspaceCommand
   }
 
   public Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateWorkspaceRequest request)
-    {
-      throw new NotImplementedException();
-    }
+  {
+    throw new NotImplementedException();
+  }
 }

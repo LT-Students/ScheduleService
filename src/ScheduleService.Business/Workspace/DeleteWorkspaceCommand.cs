@@ -16,7 +16,7 @@ public class DeleteWorkspaceCommand : IDeleteWorkspaceCommand
   }
 
   public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
-    {
-      throw new NotImplementedException();
-    }
+  {
+    throw new NotImplementedException();
+  }
 }

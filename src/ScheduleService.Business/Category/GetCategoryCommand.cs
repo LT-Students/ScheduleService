@@ -17,7 +17,7 @@ public class GetCategoryCommand : IGetCategoryCommand
   }
 
   public Task<OperationResultResponse<CategoryResponse>> ExecuteAsync(Guid id)
-    {
-      throw new NotImplementedException();
-    }
+  {
+    throw new NotImplementedException();
+  }
 }

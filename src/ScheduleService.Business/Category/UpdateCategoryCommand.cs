@@ -17,7 +17,7 @@ public class UpdatetCategoryCommand : IUpdateCategoryCommand
   }
 
   public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, UpdateCategoryRequest request)
-    {
-      throw new NotImplementedException();
-    }
+  {
+    throw new NotImplementedException();
+  }
 }

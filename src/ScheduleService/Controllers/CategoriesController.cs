@@ -19,9 +19,9 @@ public class CategoriesController : ControllerBase
   public async Task<OperationResultResponse<CategoryResponse>> GetAsync(
     [FromServices] IGetCategoryCommand command,
     [FromRoute] Guid id)
-    {
-      return await command.ExecuteAsync(id);
-    }
+   {
+    return await command.ExecuteAsync(id);
+   }
 
   [HttpGet]
   public async Task<FindResultResponse<CategoryInfo>> GetAllAsync(

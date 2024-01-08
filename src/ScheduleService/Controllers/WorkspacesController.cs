@@ -20,7 +20,6 @@ public class WorkspacesController : ControllerBase
     [FromServices] IGetWorkspaceCommand command,
     [FromRoute] Guid id)
   {
-
     return await command.ExecuteAsync(id);
   }
 
@@ -29,7 +28,6 @@ public class WorkspacesController : ControllerBase
     [FromServices] IGetWorkspacesCommand command,
     [FromQuery] GetWorkspacesFilter request)
   {
-
     return await command.ExecuteAsync(request);
   }
 
