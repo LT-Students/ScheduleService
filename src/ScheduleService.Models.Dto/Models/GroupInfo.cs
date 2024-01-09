@@ -4,7 +4,7 @@ namespace LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 
 public class GroupInfo
 {
-  Guid GroupId { get; set; }
+  Guid Id { get; set; }
 
-  string Title { get; set; }
+  string Name { get; set; }
 }

@@ -1,8 +1,11 @@
 ﻿using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Responses.Group;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Controllers;
@@ -12,50 +15,52 @@ namespace LT.DigitalOffice.ScheduleService.Controllers;
 public class GroupsController
 {
   [HttpPost]
-  public async Task<OperationResultResponse<CreateGroupResponse>> CreateAsync(
+  public async Task<OperationResultResponse<Guid?>> CreateAsync(
     [FromServices] ICreateGroupCommand command,
     [FromBody] CreateGroupRequest request)
   {
     return await command.ExecuteAsync(request);
   }
 
+  [HttpGet("{groupId}")]
+  public async Task<OperationResultResponse<GroupInfo>> FindAsync(
+    [FromServices] IGetGroupCommand command,
+    [FromRoute] Guid groupId)
+  {
+    return await command.ExecuteAsync(groupId);
+  }
+
   [HttpGet]
-  public async Task<OperationResultResponse<FindGroupResponse>> FindAsync(
-    [FromServices] IFindGroupCommand command,
-    [FromBody] FindGroupRequest request)
+  public async Task<OperationResultResponse<FindResultResponse<GroupInfo>>> FindsAsync(
+    [FromServices] IGetGroupsCommand command,
+    [FromQuery] GetGroupsFilter filter)
   {
-    return await command.ExecuteAsync(request);
+    return await command.ExecuteAsync(filter);
   }
 
-  [HttpGet("findAll")]
-  public async Task<OperationResultResponse<FindGroupsResponse>> FindsAsync(
-    [FromServices] IFindGroupsCommand command,
-    [FromBody] FindGroupsRequest request)
-  {
-    return await command.ExecuteAsync(request);
-  }
-
-  [HttpDelete]
-  public async Task<OperationResultResponse<DeleteGroupResponse>> DeleteAsync(
+  [HttpDelete("{groupId}")]
+  public async Task<OperationResultResponse<bool>> DeleteAsync(
     [FromServices] IDeleteGroupCommand command,
-    [FromBody] DeleteGroupRequest request)
+    [FromRoute] Guid groupId)
   {
-    return await command.ExecuteAsync(request);
+    return await command.ExecuteAsync(groupId);
   }
 
-  [HttpPatch]
-  public async Task<OperationResultResponse<UpdateGroupResponse>> UpdateAsync(
+  [HttpPatch("{groupId}")]
+  public async Task<OperationResultResponse<bool>> UpdateAsync(
   [FromServices] IUpdateGroupCommand command,
-  [FromBody] UpdateGroupRequest request)
+  [FromRoute] Guid groupId,
+  [FromBody] JsonPatchDocument<EditGroupRequest> request)
   {
-    return await command.ExecuteAsync(request);
+    return await command.ExecuteAsync(groupId, request);
   }
 
-  [HttpPut]
-  public async Task<OperationResultResponse<EditGroupResponse>> EditAsync(
+  [HttpPut("{groupId}")]
+  public async Task<OperationResultResponse<bool>> EditAsync(
   [FromServices] IEditGroupCommand command,
+  [FromRoute] Guid groupId,
   [FromBody] EditGroupRequest request)
   {
-    return await command.ExecuteAsync(request);
+    return await command.ExecuteAsync(groupId, request);
   }
 }

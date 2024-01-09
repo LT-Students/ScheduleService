@@ -2,7 +2,7 @@
 
 namespace LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
 
-public class DeleteGroupRequest
+public class GetGroupFilter
 {
-  public Guid GroupId { get; set; }
+  public Guid Id { get; set; }
 }
