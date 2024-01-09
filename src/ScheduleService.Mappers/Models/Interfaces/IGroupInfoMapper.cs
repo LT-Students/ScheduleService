@@ -5,7 +5,7 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 namespace LT.DigitalOffice.ScheduleService.Mappers.Models.Interfaces;
 
 [AutoInject]
-public interface ITaskInfoMapper
+public interface IGroupInfoMapper
 {
-  TaskInfo Map(DbTask dbTask);
+  GroupInfo Map(DbGroup dbGroup);
 }

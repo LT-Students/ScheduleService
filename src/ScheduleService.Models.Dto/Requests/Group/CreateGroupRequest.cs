@@ -1,6 +1,9 @@
-﻿namespace LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
+﻿using System;
+
+namespace LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
 
 public class CreateGroupRequest
 {
-  string Name { get; set; }
+  public Guid WorkspaceId { get; set; }
+  public string Name { get; set; }
 }

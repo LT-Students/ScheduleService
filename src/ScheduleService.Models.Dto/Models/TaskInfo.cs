@@ -1,7 +1,7 @@
 ﻿using LT.DigitalOffice.ScheduleService.Models.Dto.Enums;
 using System;
 
-namespace LT.DigitalOffice.ScheduleService.Models.Dto;
+namespace LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 
 public class TaskInfo
 {

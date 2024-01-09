@@ -2,7 +2,7 @@
 using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
-using LT.DigitalOffice.ScheduleService.Models.Dto;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 using System;
 using System.Threading.Tasks;
 

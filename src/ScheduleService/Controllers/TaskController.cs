@@ -6,7 +6,7 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
 using LT.DigitalOffice.ScheduleService.Business.Task;
 using Microsoft.AspNetCore.JsonPatch;
 using System.Collections.Generic;
-using LT.DigitalOffice.ScheduleService.Models.Dto;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 
 namespace LT.DigitalOffice.ScheduleService.Controllers;
 
