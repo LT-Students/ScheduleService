@@ -2,6 +2,8 @@
 using LT.DigitalOffice.Kernel.Helpers.Interfaces;
 using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
+using LT.DigitalOffice.ScheduleService.Data.Interfaces;
+using LT.DigitalOffice.ScheduleService.Validation.Group.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 

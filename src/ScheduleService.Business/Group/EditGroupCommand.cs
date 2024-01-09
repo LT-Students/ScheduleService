@@ -5,7 +5,7 @@ using LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
 using LT.DigitalOffice.ScheduleService.Mappers.Patch.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
-using LT.DigitalOffice.ScheduleService.Validation.Task.Interfaces;
+using LT.DigitalOffice.ScheduleService.Validation.Group.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;

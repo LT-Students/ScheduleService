@@ -1,6 +1,7 @@
 ﻿using LT.DigitalOffice.Kernel.Helpers.Interfaces;
 using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
+using LT.DigitalOffice.ScheduleService.Data.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
 using System.Threading.Tasks;
