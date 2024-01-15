@@ -1,7 +1,6 @@
 ﻿using LT.DigitalOffice.Kernel.Responses;
 using System.Threading.Tasks;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.GroupUser;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Responses.GroupUser;
 using LT.DigitalOffice.Kernel.Attributes;
 using System;
 

@@ -2,6 +2,8 @@
 using LT.DigitalOffice.ScheduleService.Business.GroupUser.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.GroupUser;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -32,17 +34,18 @@ public class GroupsUsersController : ControllerBase
   public async Task<OperationResultResponse<bool>> EditAsync(
       [FromServices] IEditGroupUserCommand command,
       [FromRoute] Guid id,
-      [FromBody] EditGroupUserRequest request)
+      [FromBody] JsonPatchDocument<EditGroupUserRequest> request)
   {
-    return await command.ExecuteAsync(id, request);
+    return await command.ExecuteAsync(request, id);
   }
 
   [HttpPatch("{id}")]
-  public async Task<OperationResultResponse<UpdateGroupUserResponse>> UpdateAsync(
+  public async Task<OperationResultResponse<bool>> UpdateAsync(
       [FromServices] IUpdateGroupUserCommand command,
-      [FromBody] UpdateGroupUserRequest request)
+      [FromRoute] Guid id,
+      [FromBody] EditGroupUserRequest request)
   {
-    return await command.ExecuteAsync(request);
+    return await command.ExecuteAsync(request, id);
   }
 
   [HttpGet("{id}")]
