@@ -39,6 +39,6 @@ public class EditGroupCommand : IEditGroupCommand
 
   public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, EditGroupRequest request)
   {
-    throw new System.NotImplementedException();
+    throw new NotImplementedException();
   }
 }

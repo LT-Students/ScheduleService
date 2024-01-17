@@ -30,6 +30,6 @@ public class DeleteGroupCommand : IDeleteGroupCommand
 
   public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
   {
-    throw new System.NotImplementedException();
+    throw new NotImplementedException();
   }
 }

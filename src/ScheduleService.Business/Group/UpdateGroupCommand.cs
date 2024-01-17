@@ -3,8 +3,11 @@ using LT.DigitalOffice.Kernel.Helpers.Interfaces;
 using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
 using LT.DigitalOffice.ScheduleService.Validation.Group.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
+using System;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Group;
@@ -31,8 +34,8 @@ public class UpdateGroupCommand : IUpdateGroupCommand
     _accessValidator = accessValidator;
   }
 
-  public Task<OperationResultResponse<UpdateGroupResponse>> ExecuteAsync(UpdateGroupRequest request)
+  public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, JsonPatchDocument<EditGroupRequest> request)
   {
-    throw new System.NotImplementedException();
+    throw new NotImplementedException();
   }
 }

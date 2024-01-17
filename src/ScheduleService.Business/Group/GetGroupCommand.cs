@@ -23,6 +23,6 @@ public class GetGroupCommand : IGetGroupCommand
 
   public Task<OperationResultResponse<GroupInfo>> ExecuteAsync(Guid id)
   {
-    throw new System.NotImplementedException();
+    throw new NotImplementedException();
   }
 }

@@ -1,7 +1,8 @@
 ﻿using LT.DigitalOffice.Kernel.Attributes;
 using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Responses.Group;
+using Microsoft.AspNetCore.JsonPatch;
+using System;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
@@ -9,5 +10,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
 [AutoInject]
 public interface IUpdateGroupCommand
 {
-  Task<OperationResultResponse<UpdateGroupResponse>> ExecuteAsync(UpdateGroupRequest request);
+  Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, JsonPatchDocument<EditGroupRequest> request);
 }

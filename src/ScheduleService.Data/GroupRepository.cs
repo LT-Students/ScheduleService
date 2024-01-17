@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Data;
+
 public class GroupRepository : IGroupRepository
 {
   public Task<Guid?> CreateAsync(DbGroup dbGroup)

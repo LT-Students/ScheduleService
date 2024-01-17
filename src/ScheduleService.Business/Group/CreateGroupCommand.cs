@@ -39,6 +39,6 @@ public class CreateGroupCommand : ICreateGroupCommand
 
   public Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateGroupRequest request)
   {
-    throw new System.NotImplementedException();
+    throw new NotImplementedException();
   }
 }
