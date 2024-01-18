@@ -6,7 +6,7 @@ using System;
 
 namespace LT.DigitalOffice.ScheduleService.Mappers.Models;
 
-public class GroupsUserInfoMapper : IGroupsUserInfoMapper
+public class GroupUserInfoMapper : IGroupUserInfoMapper
 {
   public GroupUserInfo Map(DbGroupsUser dbGroupsUser)
   {
