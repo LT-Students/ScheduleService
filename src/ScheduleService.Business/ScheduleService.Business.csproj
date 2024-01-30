@@ -9,4 +9,8 @@
     <ProjectReference Include="..\ScheduleService.Validation\ScheduleService.Validation.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ScheduleService.Models.Dto\ScheduleService.Models.Dto.csproj" />
+  </ItemGroup>
+
 </Project>
