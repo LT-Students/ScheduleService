@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Task;
 
-public class DeleteTaskCommand : IDeleteTaskCommand
+public class RemoveTaskCommand : IRemoveTaskCommand
 {
   private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly ITaskRepository _repository;
   private readonly IResponseCreator _responseCreator;
   private readonly IAccessValidator _accessValidator;
 
-  public DeleteTaskCommand(
+  public RemoveTaskCommand(
     IHttpContextAccessor httpContextAccessor,
     ITaskRepository repository,
     IResponseCreator responseCreator,
