@@ -3,10 +3,11 @@ using LT.DigitalOffice.Kernel.Responses;
 using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.GroupUser.Interfaces;
+namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
 
 [AutoInject]
-public interface IDeleteGroupUserCommand
+public interface IRemoveTaskCommand
 {
   Task<OperationResultResponse<bool>> ExecuteAsync(Guid id);
 }
+

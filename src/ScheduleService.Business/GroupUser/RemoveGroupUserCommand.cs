@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.GroupUser;
 
-public class RemoveGroupUserCommand : IDeleteGroupUserCommand
+public class RemoveGroupUserCommand : IRemoveGroupUserCommand
 {
   private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly IGroupUserRepository _repository;

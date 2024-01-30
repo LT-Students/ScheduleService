@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Task;
 
-public class RemoveTaskCommand : IDeleteTaskCommand
+public class RemoveTaskCommand : IRemoveTaskCommand
 {
   private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly ITaskRepository _repository;

@@ -24,7 +24,7 @@ public class GroupsUsersController : ControllerBase
 
   [HttpDelete("{id}")]
   public async Task<OperationResultResponse<bool>> DeleteAsync(
-    [FromServices] IDeleteGroupUserCommand command,
+    [FromServices] IRemoveGroupUserCommand command,
     [FromRoute] Guid id)
   {
     return await command.ExecuteAsync(id);
