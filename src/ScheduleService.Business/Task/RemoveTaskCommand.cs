@@ -1,24 +1,24 @@
 ﻿using LT.DigitalOffice.Kernel.BrokerSupport.AccessValidatorEngine.Interfaces;
 using LT.DigitalOffice.Kernel.Helpers.Interfaces;
 using LT.DigitalOffice.Kernel.Responses;
-using LT.DigitalOffice.ScheduleService.Business.GroupUser.Interfaces;
+using LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.GroupUser;
+namespace LT.DigitalOffice.ScheduleService.Business.Task;
 
-public class DeleteGroupUserCommand : IDeleteGroupUserCommand
+public class RemoveTaskCommand : IDeleteTaskCommand
 {
   private readonly IHttpContextAccessor _httpContextAccessor;
-  private readonly IGroupUserRepository _repository;
+  private readonly ITaskRepository _repository;
   private readonly IResponseCreator _responseCreator;
   private readonly IAccessValidator _accessValidator;
 
-  public DeleteGroupUserCommand(
+  public RemoveTaskCommand(
     IHttpContextAccessor httpContextAccessor,
-    IGroupUserRepository repository,
+    ITaskRepository repository,
     IResponseCreator responseCreator,
     IAccessValidator accessValidator)
   {
@@ -30,6 +30,7 @@ public class DeleteGroupUserCommand : IDeleteGroupUserCommand
 
   public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
   {
-    throw new System.NotImplementedException();
+    throw new NotImplementedException();
   }
 }
+
