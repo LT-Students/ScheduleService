@@ -59,7 +59,7 @@ public class WorkspacesController : ControllerBase
 
   [HttpDelete("{id}")]
   public async Task<OperationResultResponse<bool>> DeleteAsync(
-    [FromServices] IDeleteWorkspaceCommand command,
+    [FromServices] IRemoveWorkspaceCommand command,
     [FromRoute] Guid id)
   {
     return await command.ExecuteAsync(id);
