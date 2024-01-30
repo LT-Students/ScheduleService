@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
 
-public class DeleteWorkspaceCommand : IDeleteWorkspaceCommand
+public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
 {
   private readonly IWorkspaceRepository _repository;
 
-  public DeleteWorkspaceCommand(IWorkspaceRepository repository)
+  public RemoveWorkspaceCommand(IWorkspaceRepository repository)
   {
     _repository = repository;
   }

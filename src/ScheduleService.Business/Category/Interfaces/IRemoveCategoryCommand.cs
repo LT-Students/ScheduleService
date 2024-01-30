@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace LT.DigitalOffice.ScheduleService.Business.Category.Interfaces;
 
 [AutoInject]
-public interface IDeleteCategoryCommand
+public interface IRemoveCategoryCommand
 {
   Task<OperationResultResponse<bool>> ExecuteAsync(Guid id);
 }

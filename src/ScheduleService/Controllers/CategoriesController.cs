@@ -59,7 +59,7 @@ public class CategoriesController : ControllerBase
 
   [HttpDelete("{id}")]
   public async Task<OperationResultResponse<bool>> DeleteAsync(
-    [FromServices] IDeleteCategoryCommand command,
+    [FromServices] IRemoveCategoryCommand command,
     [FromRoute] Guid id)
   {
     return await command.ExecuteAsync(id);

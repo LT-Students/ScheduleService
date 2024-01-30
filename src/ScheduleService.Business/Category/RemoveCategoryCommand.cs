@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Category;
 
-public class DeleteCategoryCommand : IDeleteCategoryCommand
+public class RemoveCategoryCommand : IRemoveCategoryCommand
 {
   private readonly ICategoryRepository _repository;
 
-  public DeleteCategoryCommand(ICategoryRepository repository)
+  public RemoveCategoryCommand(ICategoryRepository repository)
   {
     _repository = repository;
   }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 
 [AutoInject]
-public interface IDeleteWorkspaceCommand
+public interface IRemoveWorkspaceCommand
 {
   Task<OperationResultResponse<bool>> ExecuteAsync(Guid id);
 }
