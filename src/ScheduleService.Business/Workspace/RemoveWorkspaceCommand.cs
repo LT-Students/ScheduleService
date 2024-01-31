@@ -1,6 +1,9 @@
-﻿using LT.DigitalOffice.Kernel.Responses;
+﻿using LT.DigitalOffice.Kernel.BrokerSupport.AccessValidatorEngine.Interfaces;
+using LT.DigitalOffice.Kernel.Helpers.Interfaces;
+using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
 
@@ -9,10 +12,20 @@ namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
 public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
 {
   private readonly IWorkspaceRepository _repository;
+  private readonly IHttpContextAccessor _httpContextAccessor;
+  private readonly IResponseCreator _responseCreator;
+  private readonly IAccessValidator _accessValidator;
 
-  public RemoveWorkspaceCommand(IWorkspaceRepository repository)
+  public RemoveWorkspaceCommand(
+    IWorkspaceRepository repository,
+    IAccessValidator accessValidator,
+    IHttpContextAccessor httpContextAccessor,
+    IResponseCreator responseCreator)
   {
     _repository = repository;
+    _accessValidator = accessValidator;
+    _httpContextAccessor = httpContextAccessor;
+    _responseCreator = responseCreator;
   }
 
   public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
