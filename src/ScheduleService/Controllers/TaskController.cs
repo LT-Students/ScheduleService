@@ -1,12 +1,12 @@
 ﻿using LT.DigitalOffice.Kernel.Responses;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using System;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
-using LT.DigitalOffice.ScheduleService.Business.Task;
-using Microsoft.AspNetCore.JsonPatch;
-using System.Collections.Generic;
+using LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Controllers;
 
@@ -17,7 +17,7 @@ public class TaskController : ControllerBase
   [HttpPost]
   public async Task<OperationResultResponse<Guid?>> CreateAsync(
     [FromBody] CreateTaskRequest request,
-    [FromServices] CreateTaskCommand command)
+    [FromServices] ICreateTaskCommand command)
   {
     return await command.ExecuteAsync(request);
   }
@@ -25,7 +25,7 @@ public class TaskController : ControllerBase
   [HttpGet]
   public async Task<FindResultResponse<List<TaskInfo>>> GetAllAsync(
     [FromQuery] GetTasksFilter filter,
-    [FromServices] GetTasksCommand command)
+    [FromServices] IGetTasksCommand command)
   {
     return await command.ExecuteAsync(filter);
   }
@@ -33,7 +33,7 @@ public class TaskController : ControllerBase
   [HttpGet("{id}")]
   public async Task<OperationResultResponse<TaskInfo>> GetAsync(
     [FromRoute] Guid id,
-    [FromServices] GetTaskCommand command)
+    [FromServices] IGetTaskCommand command)
   {
     return await command.ExecuteAsync(id);
   }
@@ -42,7 +42,7 @@ public class TaskController : ControllerBase
   public async Task<OperationResultResponse<bool>> EditAsync(
     [FromRoute] Guid id,
     [FromBody] EditTaskRequest request,
-    [FromServices] UpdateTaskCommand command)
+    [FromServices] IUpdateTaskCommand command)
   {
     return await command.ExecuteAsync(request, id);
   }
@@ -51,7 +51,7 @@ public class TaskController : ControllerBase
   public async Task<OperationResultResponse<bool>> EditAsync(
     [FromRoute] Guid id,
     [FromBody] JsonPatchDocument<EditTaskRequest> request,
-    [FromServices] EditTaskCommand command)
+    [FromServices] IEditTaskCommand command)
   {
     return await command.ExecuteAsync(request, id);
   }
@@ -59,7 +59,7 @@ public class TaskController : ControllerBase
   [HttpDelete("{id}")]
   public async Task<OperationResultResponse<bool>> DeleteAsync(
     [FromRoute] Guid id,
-    [FromServices] DeleteTaskCommand command)
+    [FromServices] IRemoveTaskCommand command)
   {
     return await command.ExecuteAsync(id);
   }
