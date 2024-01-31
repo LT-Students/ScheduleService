@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Category;
 
-public class UpdatetCategoryCommand : IUpdateCategoryCommand
+public class UpdateCategoryCommand : IUpdateCategoryCommand
 {
   private readonly ICategoryRepository _repository;
 
-  public UpdatetCategoryCommand(ICategoryRepository repository)
+  public UpdateCategoryCommand(ICategoryRepository repository)
   {
     _repository = repository;
   }

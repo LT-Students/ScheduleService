@@ -4,12 +4,15 @@ using LT.DigitalOffice.Kernel.BrokerSupport.Configurations;
 using LT.DigitalOffice.Kernel.BrokerSupport.Extensions;
 using LT.DigitalOffice.Kernel.BrokerSupport.Middlewares.Token;
 using LT.DigitalOffice.Kernel.Configurations;
+using LT.DigitalOffice.Kernel.EFSupport.Extensions;
 using LT.DigitalOffice.Kernel.EFSupport.Helpers;
 using LT.DigitalOffice.Kernel.Extensions;
 using LT.DigitalOffice.Kernel.Middlewares.ApiInformation;
 using LT.DigitalOffice.ScheduleService.Broker;
+using LT.DigitalOffice.ScheduleService.Data.Provider.MsSql.Ef;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -47,7 +50,7 @@ public class Startup : BaseApiInfo
     StartTime = DateTime.UtcNow;
     ApiName = $"LT Digital Office - {_serviceInfoConfig.Name}";
   }
-  
+
   public void ConfigureServices(IServiceCollection services)
   {
     services.AddCors(options =>
@@ -80,12 +83,11 @@ public class Startup : BaseApiInfo
       });
 
     string connStr = ConnectionStringHandler.Get(Configuration);
-    
-    // TODO: Add db context here
-    // services.AddDbContext<HERE>(options =>
-    // {
-    //   options.UseSqlServer(connStr);
-    // });
+
+    services.AddDbContext<ScheduleServiceDbContext>(options =>
+    {
+      options.UseSqlServer(connStr);
+    });
 
     services.AddBusinessObjects();
 
@@ -108,8 +110,7 @@ public class Startup : BaseApiInfo
 
   public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
   {
-    //TODO: Add db context here
-    //app.UpdateDatabase<HERE>();
+    app.UpdateDatabase<ScheduleServiceDbContext>();
 
     app.UseForwardedHeaders();
 
