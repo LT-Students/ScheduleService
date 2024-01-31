@@ -45,20 +45,20 @@ public class GroupsController
     return await command.ExecuteAsync(groupId);
   }
 
-  [HttpPatch("{groupId}")]
+  [HttpPut("{groupId}")]
   public async Task<OperationResultResponse<bool>> UpdateAsync(
     [FromServices] IUpdateGroupCommand command,
     [FromRoute] Guid groupId,
-    [FromBody] JsonPatchDocument<EditGroupRequest> request)
+    [FromBody] EditGroupRequest request)
   {
     return await command.ExecuteAsync(groupId, request);
   }
 
-  [HttpPut("{groupId}")]
+  [HttpPatch("{groupId}")]
   public async Task<OperationResultResponse<bool>> EditAsync(
     [FromServices] IEditGroupCommand command,
     [FromRoute] Guid groupId,
-    [FromBody] EditGroupRequest request)
+    [FromBody] JsonPatchDocument<EditGroupRequest> request)
   {
     return await command.ExecuteAsync(groupId, request);
   }
