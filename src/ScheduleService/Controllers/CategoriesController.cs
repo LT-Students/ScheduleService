@@ -51,7 +51,7 @@ public class CategoriesController : ControllerBase
   [HttpPut("{id}")]
   public async Task<OperationResultResponse<bool>> UpdateAsync(
     [FromServices] IUpdateCategoryCommand command,
-    [FromBody] UpdateCategoryRequest request,
+    [FromBody] EditCategoryRequest request,
     [FromRoute] Guid id)
   {
     return await command.ExecuteAsync(id, request);

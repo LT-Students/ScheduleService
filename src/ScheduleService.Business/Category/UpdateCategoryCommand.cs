@@ -17,14 +17,14 @@ public class UpdateCategoryCommand : IUpdateCategoryCommand
   private readonly ICategoryRepository _repository;
   private readonly IResponseCreator _responseCreator;
   private readonly IAccessValidator _accessValidator;
-  private readonly IUpdateCategoryRequestValidator _validator;
+  private readonly IEditCategoryRequestValidator _validator;
 
   public UpdateCategoryCommand(
     IHttpContextAccessor httpContextAccessor,
     ICategoryRepository repository,
     IResponseCreator responseCreator,
     IAccessValidator accessValidator,
-    IUpdateCategoryRequestValidator validator)
+    IEditCategoryRequestValidator validator)
   {
     _httpContextAccessor = httpContextAccessor;
     _repository = repository;
@@ -33,7 +33,7 @@ public class UpdateCategoryCommand : IUpdateCategoryCommand
     _validator = validator;
   }
 
-  public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, UpdateCategoryRequest request)
+  public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, EditCategoryRequest request)
   {
     throw new NotImplementedException();
   }

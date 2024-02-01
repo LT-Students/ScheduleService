@@ -14,7 +14,7 @@ namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
 public class UpdateWorkspaceCommand : IUpdateWorkspaceCommand
 {
   private readonly IWorkspaceRepository _repository;
-  private readonly IUpdateWorkspaceRequestValidator _validator;
+  private readonly IEditWorkspaceRequestValidator _validator;
   private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly IResponseCreator _responseCreator;
   private readonly IAccessValidator _accessValidator;
@@ -24,7 +24,7 @@ public class UpdateWorkspaceCommand : IUpdateWorkspaceCommand
     IAccessValidator accessValidator,
     IHttpContextAccessor httpContextAccessor,
     IResponseCreator responseCreator,
-    IUpdateWorkspaceRequestValidator validator)
+    IEditWorkspaceRequestValidator validator)
   {
     _repository = repository;
     _accessValidator = accessValidator;

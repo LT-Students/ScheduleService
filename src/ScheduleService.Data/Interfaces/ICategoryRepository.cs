@@ -16,9 +16,9 @@ public interface ICategoryRepository
 
   Task<DbCategory> GetAsync(Guid id);
 
-  Task<bool> EditByIdAsync(Guid id, JsonPatchDocument<DbCategory> dbCategory);
+  Task<bool> EditAsync(Guid id, JsonPatchDocument<DbCategory> dbCategory);
 
-  Task<bool> UpdateByIdAsync(Guid id, DbCategory dbCategory);
+  Task<bool> UpdateAsync(Guid id, DbCategory dbCategory);
 
   Task<bool> RemoveAsync(Guid id);
 }

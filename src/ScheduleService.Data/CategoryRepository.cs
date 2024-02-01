@@ -14,7 +14,7 @@ public class CategoryRepository : ICategoryRepository
     throw new NotImplementedException();
   }
 
-  public Task<bool> EditByIdAsync(Guid id, JsonPatchDocument<DbCategory> dbCategory)
+  public Task<bool> EditAsync(Guid id, JsonPatchDocument<DbCategory> dbCategory)
   {
     throw new NotImplementedException();
   }
@@ -34,7 +34,7 @@ public class CategoryRepository : ICategoryRepository
     throw new NotImplementedException();
   }
 
-  public Task<bool> UpdateByIdAsync(Guid id, DbCategory dbCategory)
+  public Task<bool> UpdateAsync(Guid id, DbCategory dbCategory)
   {
     throw new NotImplementedException();
   }

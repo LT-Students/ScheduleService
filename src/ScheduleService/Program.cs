@@ -40,7 +40,7 @@ public class Program
     }
     catch (Exception exc)
     {
-      Log.Fatal(exc, "Can not properly start TimeService.");
+      Log.Fatal(exc, "Can not properly start SheduleService.");
     }
     finally
     {
