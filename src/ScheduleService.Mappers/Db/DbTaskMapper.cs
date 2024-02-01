@@ -1,4 +1,5 @@
 ﻿using LT.DigitalOffice.Kernel.Extensions;
+using LT.DigitalOffice.ScheduleService.Mappers.Db.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Db;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -6,7 +7,7 @@ using System;
 
 namespace LT.DigitalOffice.ScheduleService.Mappers.Db;
 
-public class DbTaskMapper
+public class DbTaskMapper : IDbTaskMapper
 {
   private readonly IHttpContextAccessor _httpContextAccessor;
 
