@@ -11,5 +11,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
 [AutoInject]
 public interface IGetTasksCommand
 {
-  Task<FindResultResponse<List<TaskInfo>>> ExecuteAsync(GetTasksFilter filter);
+  Task<FindResultResponse<List<TaskResponse>>> ExecuteAsync(GetTasksFilter filter);
 }

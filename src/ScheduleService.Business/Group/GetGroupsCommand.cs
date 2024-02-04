@@ -22,7 +22,7 @@ public class GetGroupsCommand : IGetGroupsCommand
     _responseCreator = responseCreator;
   }
 
-  public Task<OperationResultResponse<FindResultResponse<GroupInfo>>> ExecuteAsync(GetGroupsFilter request)
+  public Task<OperationResultResponse<FindResultResponse<GroupResponse>>> ExecuteAsync(GetGroupsFilter request)
   {
     throw new NotImplementedException();
   }

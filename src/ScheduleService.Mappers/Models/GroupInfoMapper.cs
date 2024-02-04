@@ -6,11 +6,11 @@ namespace LT.DigitalOffice.ScheduleService.Mappers.Models;
 
 public class GroupInfoMapper : IGroupInfoMapper
 {
-    public GroupInfo Map(DbGroup dbGroup)
+    public GroupResponse Map(DbGroup dbGroup)
     {
       return dbGroup is null
         ? default
-        : new GroupInfo
+        : new GroupResponse
         {
           Id = dbGroup.Id,
           Name = dbGroup.Name,

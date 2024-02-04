@@ -2,7 +2,7 @@
 
 namespace LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 
-public class GroupInfo
+public class GroupResponse
 {
   public Guid Id { get; set; }
   public Guid WorkspaceId { get; set; }

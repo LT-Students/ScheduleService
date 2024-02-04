@@ -21,7 +21,7 @@ public class GetTaskCommand : IGetTaskCommand
     _responseCreator = responseCreator;
   }
 
-  public Task<OperationResultResponse<TaskInfo>> ExecuteAsync(Guid id)
+  public Task<OperationResultResponse<TaskResponse>> ExecuteAsync(Guid id)
   {
     throw new NotImplementedException();
   }

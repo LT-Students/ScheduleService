@@ -9,5 +9,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
 [AutoInject]
 public interface IGetGroupsCommand
 {
-  Task<OperationResultResponse<FindResultResponse<GroupInfo>>> ExecuteAsync(GetGroupsFilter request);
+  Task<OperationResultResponse<FindResultResponse<GroupResponse>>> ExecuteAsync(GetGroupsFilter request);
 }

@@ -7,5 +7,5 @@ namespace LT.DigitalOffice.ScheduleService.Mappers.Models.Interfaces;
 [AutoInject]
 public interface IGroupInfoMapper
 {
-  GroupInfo Map(DbGroup dbGroup);
+  GroupResponse Map(DbGroup dbGroup);
 }

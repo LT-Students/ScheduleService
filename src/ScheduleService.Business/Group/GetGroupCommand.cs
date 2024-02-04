@@ -21,7 +21,7 @@ public class GetGroupCommand : IGetGroupCommand
     _responseCreator = responseCreator;
   }
 
-  public Task<OperationResultResponse<GroupInfo>> ExecuteAsync(Guid id)
+  public Task<OperationResultResponse<GroupResponse>> ExecuteAsync(Guid id)
   {
     throw new NotImplementedException();
   }

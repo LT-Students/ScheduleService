@@ -22,7 +22,7 @@ public class GroupsController
   }
 
   [HttpGet("{groupId}")]
-  public async Task<OperationResultResponse<GroupInfo>> FindAsync(
+  public async Task<OperationResultResponse<GroupResponse>> FindAsync(
     [FromServices] IGetGroupCommand command,
     [FromRoute] Guid groupId)
   {
@@ -30,7 +30,7 @@ public class GroupsController
   }
 
   [HttpGet]
-  public async Task<OperationResultResponse<FindResultResponse<GroupInfo>>> FindsAsync(
+  public async Task<OperationResultResponse<FindResultResponse<GroupResponse>>> FindsAsync(
     [FromServices] IGetGroupsCommand command,
     [FromQuery] GetGroupsFilter filter)
   {
