@@ -10,7 +10,7 @@ namespace LT.DigitalOffice.ScheduleService.Data.Interfaces;
 [AutoInject]
 public interface IWorkspaceRepository
 {
-  Task CreateAsync(DbWorkspace board);
+  Task<Guid?> CreateAsync(DbWorkspace board);
 
   Task<List<DbWorkspace>> GetAllAsync();
 
@@ -20,5 +20,7 @@ public interface IWorkspaceRepository
 
   Task<bool> UpdateByIdAsync(Guid id, DbWorkspace dbWorkspace);
 
-  Task<bool> RemoveAsync(Guid id);
+  Task<bool> RemoveAsync(DbWorkspace dbWorkspace, Guid modifiedBy);
+
+  Task<bool> ExistAsync(Guid id);
 }

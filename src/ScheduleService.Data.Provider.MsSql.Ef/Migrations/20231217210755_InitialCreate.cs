@@ -49,6 +49,11 @@ public class InitialCreate : Migration
       {
         Id = table.Column<Guid>(nullable: false),
         Name = table.Column<string>(nullable: false, maxLength: 100),
+        CreatedBy = table.Column<Guid>(nullable: false),
+        CreatedAtUtc = table.Column<DateTime>(nullable: false),
+        ModifiedBy = table.Column<Guid>(nullable: true),
+        ModifiedAtUtc = table.Column<DateTime>(nullable: true),
+        IsActive = table.Column<bool>(nullable: false),
       },
       constraints: table =>
       {

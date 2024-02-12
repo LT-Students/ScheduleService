@@ -6,4 +6,10 @@ namespace LT.DigitalOffice.ScheduleService.Validation.Workspace;
 
 public class CreateWorkspaceRequestValidator : AbstractValidator<CreateWorkspaceRequest>, ICreateWorkspaceRequestValidator
 {
+  public CreateWorkspaceRequestValidator()
+  {
+    RuleFor(request => request.Name)
+      .NotEmpty()
+      .MaximumLength(100).WithMessage("Name too long"); // add name exist?
+  }
 }

@@ -15,10 +15,10 @@ namespace LT.DigitalOffice.DepartmentService.Controllers;
 [ApiController]
 public class WorkspacesController : ControllerBase
 {
-  [HttpGet("{id}")]
+  [HttpGet("get")]
   public async Task<OperationResultResponse<WorkspaceResponse>> GetAsync(
     [FromServices] IGetWorkspaceCommand command,
-    [FromRoute] Guid id)
+    [FromQuery] Guid id)
   {
     return await command.ExecuteAsync(id);
   }
@@ -31,7 +31,7 @@ public class WorkspacesController : ControllerBase
     return await command.ExecuteAsync(request);
   }
 
-  [HttpPost]
+  [HttpPost("create")]
   public async Task<OperationResultResponse<Guid?>> CreateAsync(
     [FromServices] ICreateWorkspaceCommand command,
     [FromBody] CreateWorkspaceRequest request)
@@ -57,10 +57,10 @@ public class WorkspacesController : ControllerBase
     return await command.ExecuteAsync(id, request);
   }
 
-  [HttpDelete("{id}")]
+  [HttpDelete("delete")]
   public async Task<OperationResultResponse<bool>> DeleteAsync(
     [FromServices] IRemoveWorkspaceCommand command,
-    [FromRoute] Guid id)
+    [FromQuery] Guid id)
   {
     return await command.ExecuteAsync(id);
   }

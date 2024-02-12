@@ -1,10 +1,15 @@
 ﻿using LT.DigitalOffice.Kernel.BrokerSupport.AccessValidatorEngine.Interfaces;
+using LT.DigitalOffice.Kernel.Constants;
+using LT.DigitalOffice.Kernel.Enums;
+using LT.DigitalOffice.Kernel.Extensions;
 using LT.DigitalOffice.Kernel.Helpers.Interfaces;
 using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
+using LT.DigitalOffice.ScheduleService.Models.Db;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
@@ -28,8 +33,19 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
     _responseCreator = responseCreator;
   }
 
-  public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
+  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
   {
-    throw new NotImplementedException();
+    DbWorkspace dbWorkspace = await _repository.GetAsync(id);
+    Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
+
+    if (dbWorkspace is null)
+    {
+      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
+    }
+
+    return new()
+    {
+      Body = await _repository.RemoveAsync(dbWorkspace, modifiedBy)
+    };
   }
 }
