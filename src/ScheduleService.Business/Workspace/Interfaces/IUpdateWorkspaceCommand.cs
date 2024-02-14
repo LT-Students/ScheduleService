@@ -9,5 +9,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 [AutoInject]
 public interface IUpdateWorkspaceCommand
 {
-  Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, UpdateWorkspaceRequest request);
+  Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, EditWorkspaceRequest request);
 }

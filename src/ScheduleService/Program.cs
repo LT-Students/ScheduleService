@@ -28,7 +28,7 @@ public class Program
 
     Log.Logger = new LoggerConfiguration().ReadFrom
       .Configuration(configuration)
-      .Enrich.WithProperty("Service", "TimeService")
+      .Enrich.WithProperty("Service", "SheduleService")
       .WriteTo.Seq(
         serverUrl: seqServerUrl,
         apiKey: seqApiKey)

@@ -23,10 +23,10 @@ public class WorkspacesController : ControllerBase
     return await command.ExecuteAsync(id);
   }
 
-  [HttpGet]
-  public async Task<FindResultResponse<WorkspaceInfo>> GetAllAsync(
-    [FromServices] IGetWorkspacesCommand command,
-    [FromQuery] GetWorkspacesFilter request)
+  [HttpGet("find")]
+  public async Task<FindResultResponse<WorkspaceResponse>> GetAllAsync(
+    [FromServices] IFindWorkspacesCommand command,
+    [FromQuery] FindWorkspaceFilter request)
   {
     return await command.ExecuteAsync(request);
   }
@@ -39,7 +39,7 @@ public class WorkspacesController : ControllerBase
     return await command.ExecuteAsync(request);
   }
 
-  [HttpPatch("{id}")]
+  [HttpPatch("edit")]
   public async Task<OperationResultResponse<bool>> EditAsync(
     [FromServices] IEditWorkspaceCommand command,
     [FromBody] JsonPatchDocument<EditWorkspaceRequest> request,
@@ -48,16 +48,16 @@ public class WorkspacesController : ControllerBase
     return await command.ExecuteAsync(id, request);
   }
 
-  [HttpPut("{id}")]
+  [HttpPut("update")]
   public async Task<OperationResultResponse<bool>> UpdateAsync(
     [FromServices] IUpdateWorkspaceCommand command,
-    [FromBody] UpdateWorkspaceRequest request,
+    [FromBody] EditWorkspaceRequest request,
     [FromRoute] Guid id)
   {
     return await command.ExecuteAsync(id, request);
   }
 
-  [HttpDelete("delete")]
+  [HttpDelete("remove")]
   public async Task<OperationResultResponse<bool>> DeleteAsync(
     [FromServices] IRemoveWorkspaceCommand command,
     [FromQuery] Guid id)

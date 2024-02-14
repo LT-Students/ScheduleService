@@ -38,6 +38,8 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
     DbWorkspace dbWorkspace = await _repository.GetAsync(id);
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
 
+    //check rights?
+
     if (dbWorkspace is null)
     {
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
@@ -46,6 +48,7 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
     return new()
     {
       Body = await _repository.RemoveAsync(dbWorkspace, modifiedBy)
+      //errors?
     };
   }
 }
