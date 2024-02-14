@@ -1,29 +1,29 @@
 ﻿using LT.DigitalOffice.Kernel.Helpers.Interfaces;
 using LT.DigitalOffice.Kernel.Responses;
-using LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
+using LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
 using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Task;
+namespace LT.DigitalOffice.ScheduleService.Business.Group;
 
-public class GetTaskCommand : IGetTaskCommand
+public class GetGroupsCommand : IGetGroupsCommand
 {
-  private readonly ITaskRepository _repository;
+  private readonly IGroupRepository _repository;
   private readonly IResponseCreator _responseCreator;
 
-  public GetTaskCommand(
-    ITaskRepository repository,
+  public GetGroupsCommand(
+    IGroupRepository repository,
     IResponseCreator responseCreator)
   {
     _repository = repository;
     _responseCreator = responseCreator;
   }
 
-  public Task<OperationResultResponse<TaskInfo>> ExecuteAsync(Guid id)
+  public Task<OperationResultResponse<FindResultResponse<GroupResponse>>> ExecuteAsync(GetGroupsFilter request)
   {
     throw new NotImplementedException();
   }
 }
-

@@ -1,13 +1,12 @@
 ﻿using LT.DigitalOffice.Kernel.Responses;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using System;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
-using LT.DigitalOffice.ScheduleService.Business.Task;
-using Microsoft.AspNetCore.JsonPatch;
-using System.Collections.Generic;
-using LT.DigitalOffice.ScheduleService.Models.Dto;
 using LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Tasks;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Controllers;
 

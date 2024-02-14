@@ -4,10 +4,10 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
+namespace LT.DigitalOffice.ScheduleService.Business.Group.Interfaces;
 
 [AutoInject]
-public interface IGetTaskCommand
+public interface IGetGroupCommand
 {
-  Task<OperationResultResponse<TaskInfo>> ExecuteAsync(Guid id);
+  Task<OperationResultResponse<GroupResponse>> ExecuteAsync(Guid id);
 }
