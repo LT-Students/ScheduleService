@@ -7,5 +7,5 @@ namespace LT.DigitalOffice.ScheduleService.Mappers.Models.Interfaces;
 [AutoInject]
 public interface ITaskInfoMapper
 {
-  TaskResponse Map(DbTask dbTask);
+  TaskInfo Map(DbTask dbTask);
 }

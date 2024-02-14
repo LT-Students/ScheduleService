@@ -7,11 +7,11 @@ namespace LT.DigitalOffice.ScheduleService.Mappers.Models;
 
 public class TaskInfoMapper : ITaskInfoMapper
 {
-    public TaskResponse Map(DbTask dbTask)
+    public TaskInfo Map(DbTask dbTask)
     {
       return dbTask is null
         ? default
-        : new TaskResponse
+        : new TaskInfo
         {
           Id = dbTask.Id,
           Name = dbTask.Name,

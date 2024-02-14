@@ -23,7 +23,7 @@ public class GetTasksCommand : IGetTasksCommand
     _responseCreator = responseCreator;
   }
 
-  public Task<FindResultResponse<List<TaskResponse>>> ExecuteAsync(GetTasksFilter filter)
+  public Task<FindResultResponse<List<TaskInfo>>> ExecuteAsync(GetTasksFilter filter)
   {
     throw new NotImplementedException();
   }

@@ -23,7 +23,7 @@ public class TaskController : ControllerBase
   }
 
   [HttpGet]
-  public async Task<FindResultResponse<List<TaskResponse>>> GetAllAsync(
+  public async Task<FindResultResponse<List<TaskInfo>>> GetAllAsync(
     [FromQuery] GetTasksFilter filter,
     [FromServices] IGetTasksCommand command)
   {
@@ -31,7 +31,7 @@ public class TaskController : ControllerBase
   }
 
   [HttpGet("{id}")]
-  public async Task<OperationResultResponse<TaskResponse>> GetAsync(
+  public async Task<OperationResultResponse<TaskInfo>> GetAsync(
     [FromRoute] Guid id,
     [FromServices] IGetTaskCommand command)
   {

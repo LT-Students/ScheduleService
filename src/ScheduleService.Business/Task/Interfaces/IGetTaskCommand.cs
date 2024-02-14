@@ -9,5 +9,5 @@ namespace LT.DigitalOffice.ScheduleService.Business.Task.Interfaces;
 [AutoInject]
 public interface IGetTaskCommand
 {
-  Task<OperationResultResponse<TaskResponse>> ExecuteAsync(Guid id);
+  Task<OperationResultResponse<TaskInfo>> ExecuteAsync(Guid id);
 }
