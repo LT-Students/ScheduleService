@@ -38,21 +38,21 @@ public class UpdateWorkspaceCommand : IUpdateWorkspaceCommand
 
   public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, EditWorkspaceRequest request)
   {
-    ValidationResult validationResult = await _validator.ValidateAsync(request);
+    //ValidationResult validationResult = await _validator.ValidateAsync((id, request));
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
 
-    if (!validationResult.IsValid)
-    {
-      return _responseCreator.CreateFailureResponse<bool>(System.Net.HttpStatusCode.BadRequest,
-        validationResult.Errors.Select(x => x.ErrorMessage).ToList());
-    }
+    //if (!validationResult.IsValid)
+    //{
+    //  return _responseCreator.CreateFailureResponse<bool>(System.Net.HttpStatusCode.BadRequest,
+    //    validationResult.Errors.Select(x => x.ErrorMessage).ToList());
+    //}
 
     //check rights?
 
     return new()
     {
-      Body = await _repository.UpdateByIdAsync(id, modifiedBy, request)
-      //errors
+      Body = await _repository.UpdateAsync(id, modifiedBy, request)
+      //errors?
     };
   }
 }

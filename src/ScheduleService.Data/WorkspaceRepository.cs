@@ -32,12 +32,12 @@ public class WorkspaceRepository : IWorkspaceRepository
     return workspace.Id;
   }
 
-  public Task<bool> EditByIdAsync(Guid id, JsonPatchDocument<DbWorkspace> dbWorkspace)
+  public Task<bool> EditAsync(Guid id, JsonPatchDocument<DbWorkspace> dbWorkspace)
   {
     throw new NotImplementedException();
   }
 
-  public async Task<(List<DbWorkspace>, int totalCount)> FindAsync(FindWorkspaceFilter filter) //add total count?
+  public async Task<(List<DbWorkspace>, int totalCount)> FindAsync(FindWorkspaceFilter filter)
   {
     IQueryable<DbWorkspace> dbWorkspaces = _provider.Workspaces.AsQueryable();
 
@@ -82,7 +82,25 @@ public class WorkspaceRepository : IWorkspaceRepository
     return true;
   }
 
-  public async Task<bool> UpdateByIdAsync(Guid id, Guid modifiedBy, EditWorkspaceRequest request)
+  public async Task<bool> EditAsync(Guid id, Guid modifiedBy, JsonPatchDocument<DbWorkspace> request)
+  {
+    DbWorkspace dbWorkspace = await _provider.Workspaces.FirstOrDefaultAsync(w => w.Id == id);
+
+    if (dbWorkspace is null || request is null)
+    {
+      return false;
+    }
+
+    request.ApplyTo(dbWorkspace);
+    dbWorkspace.ModifiedBy = modifiedBy;
+    dbWorkspace.ModifiedAtUtc = DateTime.UtcNow;
+
+    await _provider.SaveAsync();
+
+    return true;
+  }
+
+  public async Task<bool> UpdateAsync(Guid id, Guid modifiedBy, EditWorkspaceRequest request)
   {
     DbWorkspace dbWorkspace = await _provider.Workspaces.FirstOrDefaultAsync(w => w.Id == id);
 
@@ -92,6 +110,7 @@ public class WorkspaceRepository : IWorkspaceRepository
     }
 
     dbWorkspace.Name = request.Name;
+    dbWorkspace.IsActive = request.IsActive;
     dbWorkspace.ModifiedBy = modifiedBy;
     dbWorkspace.ModifiedAtUtc = DateTime.UtcNow;
 
@@ -103,5 +122,15 @@ public class WorkspaceRepository : IWorkspaceRepository
   public Task<bool> ExistAsync(Guid id)
   {
     return _provider.Workspaces.AnyAsync(x => x.Id == id && x.IsActive);
+  }
+
+  public Task<bool> NameExistAsync(string name, Guid workspaceId)
+  {
+    return _provider.Workspaces.AnyAsync(d => d.Name == name && d.Id != workspaceId);
+  }
+
+  public Task<bool> IdExistAsync(Guid id)
+  {
+    return _provider.Workspaces.AnyAsync(w => w.Id == id);
   }
 }

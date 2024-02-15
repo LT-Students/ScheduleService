@@ -50,6 +50,7 @@ public class FindWorkspacesCommand : IFindWorkspacesCommand
     {
       Body  = dbWorkspaces.Select(w => _responseMapper.Map(w)).ToList(),
       TotalCount = totalCount
+      //errors?
     };
   }
 }

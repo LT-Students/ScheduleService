@@ -18,11 +18,15 @@ public interface IWorkspaceRepository
 
   Task<DbWorkspace> GetAsync(Guid id);
 
-  Task<bool> EditByIdAsync(Guid id, JsonPatchDocument<DbWorkspace> dbWorkspace);
+  Task<bool> EditAsync(Guid id, JsonPatchDocument<DbWorkspace> dbWorkspace);
 
-  Task<bool> UpdateByIdAsync(Guid id, Guid ModifiedBy, EditWorkspaceRequest request);
+  Task<bool> UpdateAsync(Guid id, Guid ModifiedBy, EditWorkspaceRequest request);
 
   Task<bool> RemoveAsync(DbWorkspace dbWorkspace, Guid modifiedBy);
 
   Task<bool> ExistAsync(Guid id);
+
+  Task<bool> NameExistAsync(string name, Guid workspaceId);
+
+  Task<bool> IdExistAsync(Guid id);
 }
