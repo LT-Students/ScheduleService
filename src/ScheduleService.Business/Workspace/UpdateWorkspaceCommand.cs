@@ -40,7 +40,7 @@ public class UpdateWorkspaceCommand : IUpdateWorkspaceCommand
 
   public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, EditWorkspaceRequest request)
   {
-    ValidationResult validationResult = await _validator.ValidateAsync((request));
+    ValidationResult validationResult = await _validator.ValidateAsync(request);
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
 
     if (!validationResult.IsValid)

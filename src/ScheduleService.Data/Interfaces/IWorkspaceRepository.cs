@@ -18,7 +18,7 @@ public interface IWorkspaceRepository
 
   Task<DbWorkspace> GetAsync(Guid id);
 
-  Task<bool> EditAsync(Guid id, JsonPatchDocument<DbWorkspace> dbWorkspace);
+  Task<bool> EditAsync(Guid id, Guid modifiedBy, JsonPatchDocument<DbWorkspace> dbWorkspace);
 
   Task<bool> UpdateAsync(Guid id, Guid ModifiedBy, EditWorkspaceRequest request);
 

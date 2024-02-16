@@ -43,7 +43,7 @@ public class WorkspacesController : ControllerBase
   public async Task<OperationResultResponse<bool>> EditAsync(
     [FromServices] IEditWorkspaceCommand command,
     [FromBody] JsonPatchDocument<EditWorkspaceRequest> request,
-    [FromRoute] Guid id)
+    [FromQuery] Guid id)
   {
     return await command.ExecuteAsync(id, request);
   }
@@ -52,7 +52,7 @@ public class WorkspacesController : ControllerBase
   public async Task<OperationResultResponse<bool>> UpdateAsync(
     [FromServices] IUpdateWorkspaceCommand command,
     [FromBody] EditWorkspaceRequest request,
-    [FromRoute] Guid id)
+    [FromQuery] Guid id)
   {
     return await command.ExecuteAsync(id, request);
   }

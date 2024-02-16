@@ -63,7 +63,7 @@ public class EditWorkspaceCommand : IEditWorkspaceCommand
 
     OperationResultResponse<bool> response = new()
     {
-      Body = await _repository.EditAsync(id, _mapper.Map(request))
+      Body = await _repository.EditAsync(id, modifiedBy, _mapper.Map(request))
     };
 
     return response;

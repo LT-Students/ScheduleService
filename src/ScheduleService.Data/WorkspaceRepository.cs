@@ -4,9 +4,7 @@ using LT.DigitalOffice.ScheduleService.Models.Db;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace.Filters;
 using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +28,6 @@ public class WorkspaceRepository : IWorkspaceRepository
     await _provider.SaveAsync();
 
     return workspace.Id;
-  }
-
-  public Task<bool> EditAsync(Guid id, JsonPatchDocument<DbWorkspace> dbWorkspace)
-  {
-    throw new NotImplementedException();
   }
 
   public async Task<(List<DbWorkspace>, int totalCount)> FindAsync(FindWorkspaceFilter filter)

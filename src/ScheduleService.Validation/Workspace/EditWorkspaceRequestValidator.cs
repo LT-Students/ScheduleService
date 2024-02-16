@@ -45,7 +45,7 @@ public class EditWorkspaceRequestValidator : ExtendedEditRequestValidator<Guid, 
       new()
       {
         {x  => !string.IsNullOrEmpty(x.value?.ToString().Trim()), "Empty Name."},
-        {x => x.value?.ToString().Trim().Length > 100, "Name is too long." },
+        {x => x.value?.ToString().Length < 100, "Name is too long." },
       }, CascadeMode.Stop);
 
     await AddFailureForPropertyIfNotAsync(
