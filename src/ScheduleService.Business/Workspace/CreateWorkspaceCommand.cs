@@ -13,7 +13,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using LT.DigitalOffice.ScheduleService.Mappers.Db.Interfaces;
 using LT.DigitalOffice.Kernel.Extensions;
-using LT.DigitalOffice.ScheduleService.Models.Db;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
 

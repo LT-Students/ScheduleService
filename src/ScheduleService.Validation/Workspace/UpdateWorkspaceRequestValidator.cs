@@ -5,14 +5,12 @@ using LT.DigitalOffice.ScheduleService.Validation.Workspace.Interfaces;
 
 namespace LT.DigitalOffice.ScheduleService.Validation.Workspace;
 
-public class CreateWorkspaceRequestValidator : AbstractValidator<CreateWorkspaceRequest>, ICreateWorkspaceRequestValidator
+public class UpdateWorkspaceRequestValidator : AbstractValidator<EditWorkspaceRequest>, IUpdateWorkspaceRequestValidator
 {
-  public CreateWorkspaceRequestValidator(
-    IWorkspaceRepository repository)
+  public UpdateWorkspaceRequestValidator()
   {
     RuleFor(request => request.Name)
       .NotEmpty()
-      .MaximumLength(100).WithMessage("Name too long")
-      .MustAsync(async (request, _) => !await repository.NameExistAsync(request));
+      .MaximumLength(100).WithMessage("Name too long");
   }
 }

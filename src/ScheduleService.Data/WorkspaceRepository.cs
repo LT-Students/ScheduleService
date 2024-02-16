@@ -124,9 +124,11 @@ public class WorkspaceRepository : IWorkspaceRepository
     return _provider.Workspaces.AnyAsync(x => x.Id == id && x.IsActive);
   }
 
-  public Task<bool> NameExistAsync(string name, Guid workspaceId)
+  public Task<bool> NameExistAsync(string name, Guid? workspaceId = null)
   {
-    return _provider.Workspaces.AnyAsync(d => d.Name == name && d.Id != workspaceId);
+    return workspaceId.HasValue
+      ? _provider.Workspaces.AnyAsync(d => d.Name == name && d.Id != workspaceId)
+      : _provider.Workspaces.AnyAsync(d => d.Name == name);
   }
 
   public Task<bool> IdExistAsync(Guid id)

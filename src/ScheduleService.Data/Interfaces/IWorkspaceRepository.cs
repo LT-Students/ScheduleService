@@ -26,7 +26,7 @@ public interface IWorkspaceRepository
 
   Task<bool> ExistAsync(Guid id);
 
-  Task<bool> NameExistAsync(string name, Guid workspaceId);
+  Task<bool> NameExistAsync(string name, Guid? workspaceId = null);
 
   Task<bool> IdExistAsync(Guid id);
 }

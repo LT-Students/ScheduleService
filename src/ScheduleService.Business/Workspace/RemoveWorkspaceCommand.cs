@@ -38,7 +38,10 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
     DbWorkspace dbWorkspace = await _repository.GetAsync(id);
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
 
-    //check rights?
+    if (!(modifiedBy == dbWorkspace.CreatedBy))
+    {
+      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+    }
 
     if (dbWorkspace is null)
     {
