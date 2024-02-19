@@ -1,10 +1,7 @@
-﻿using LT.DigitalOffice.Kernel.BrokerSupport.AccessValidatorEngine.Interfaces;
-using LT.DigitalOffice.Kernel.Helpers.Interfaces;
-using LT.DigitalOffice.Kernel.Responses;
+﻿using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace.Filters;
-using LT.DigitalOffice.Kernel.Validators.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -12,8 +9,6 @@ using LT.DigitalOffice.ScheduleService.Models.Db;
 using System.Linq;
 using LT.DigitalOffice.ScheduleService.Mappers.Models.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
-using System.ComponentModel.DataAnnotations;
-using LT.DigitalOffice.ScheduleService.Validation.Workspace.Interfaces;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
 
@@ -42,10 +37,12 @@ public class FindWorkspacesCommand : IFindWorkspacesCommand
       return new FindResultResponse<WorkspaceResponse>();
     }
 
-    return new FindResultResponse<WorkspaceResponse>()
+    FindResultResponse<WorkspaceResponse> response = new()
     {
-      Body  = dbWorkspaces.Select(w => _responseMapper.Map(w)).ToList(),
+      Body = dbWorkspaces.Select(dbWorkspace => _responseMapper.Map(dbWorkspace)).ToList(),
       TotalCount = totalCount
     };
+
+    return response;
   }
 }
