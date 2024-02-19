@@ -12,6 +12,8 @@ using LT.DigitalOffice.ScheduleService.Models.Db;
 using System.Linq;
 using LT.DigitalOffice.ScheduleService.Mappers.Models.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
+using System.ComponentModel.DataAnnotations;
+using LT.DigitalOffice.ScheduleService.Validation.Workspace.Interfaces;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
 
@@ -50,7 +52,6 @@ public class FindWorkspacesCommand : IFindWorkspacesCommand
     {
       Body  = dbWorkspaces.Select(w => _responseMapper.Map(w)).ToList(),
       TotalCount = totalCount
-      //errors?
     };
   }
 }

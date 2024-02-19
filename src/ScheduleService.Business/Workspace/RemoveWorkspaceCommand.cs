@@ -1,6 +1,4 @@
 ﻿using LT.DigitalOffice.Kernel.BrokerSupport.AccessValidatorEngine.Interfaces;
-using LT.DigitalOffice.Kernel.Constants;
-using LT.DigitalOffice.Kernel.Enums;
 using LT.DigitalOffice.Kernel.Extensions;
 using LT.DigitalOffice.Kernel.Helpers.Interfaces;
 using LT.DigitalOffice.Kernel.Responses;
@@ -48,10 +46,11 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
     }
 
-    return new()
+    OperationResultResponse<bool> response = new()
     {
       Body = await _repository.RemoveAsync(dbWorkspace, modifiedBy)
-      //errors?
     };
+
+    return response;
   }
 }

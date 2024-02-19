@@ -56,10 +56,11 @@ public class UpdateWorkspaceCommand : IUpdateWorkspaceCommand
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
     }
 
-    return new()
+    OperationResultResponse<bool> response = new()
     {
       Body = await _repository.UpdateAsync(id, modifiedBy, request)
-      //errors?
     };
+
+    return response;
   }
 }
