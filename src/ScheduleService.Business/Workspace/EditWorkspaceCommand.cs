@@ -25,18 +25,15 @@ public class EditWorkspaceCommand : IEditWorkspaceCommand
   private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly IResponseCreator _responseCreator;
   private readonly IPatchDbWorkspaceMapper _mapper;
-  private readonly IAccessValidator _accessValidator;
 
   public EditWorkspaceCommand(
     IWorkspaceRepository repository,
-    IAccessValidator accessValidator,
     IHttpContextAccessor httpContextAccessor,
     IResponseCreator responseCreator,
     IPatchDbWorkspaceMapper mapper,
     IEditWorkspaceRequestValidator validator)
   {
     _repository = repository;
-    _accessValidator = accessValidator;
     _httpContextAccessor = httpContextAccessor;
     _responseCreator = responseCreator;
     _mapper = mapper;

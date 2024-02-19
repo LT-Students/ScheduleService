@@ -22,21 +22,15 @@ public class FindWorkspacesCommand : IFindWorkspacesCommand
   private readonly IWorkspaceRepository _repository;
   private readonly IWorkspaceResponseMapper _responseMapper;
   private readonly IHttpContextAccessor _httpContextAccessor;
-  private readonly IResponseCreator _responseCreator;
-  private readonly IAccessValidator _accessValidator;
 
   public FindWorkspacesCommand(
     IWorkspaceRepository repository,
     IWorkspaceResponseMapper responseMapper,
-    IAccessValidator accessValidator,
-    IHttpContextAccessor httpContextAccessor,
-    IResponseCreator responseCreator)
+    IHttpContextAccessor httpContextAccessor)
   {
     _repository = repository;
     _responseMapper = responseMapper;
-    _accessValidator = accessValidator;
     _httpContextAccessor = httpContextAccessor;
-    _responseCreator = responseCreator;
   }
 
   public async Task<FindResultResponse<WorkspaceResponse>> ExecuteAsync(FindWorkspaceFilter filter)

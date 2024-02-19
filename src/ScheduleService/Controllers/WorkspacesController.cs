@@ -5,7 +5,6 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace.Filters;
 using System;
 using LT.DigitalOffice.Kernel.Responses;
-using LT.DigitalOffice.ScheduleService.Models.Dto.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 

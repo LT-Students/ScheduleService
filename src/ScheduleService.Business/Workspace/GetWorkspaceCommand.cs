@@ -18,7 +18,6 @@ public class GetWorkspaceCommand : IGetWorkspaceCommand
   private readonly IWorkspaceRepository _repository;
   private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly IResponseCreator _responseCreator;
-  private readonly IAccessValidator _accessValidator;
   private readonly IWorkspaceResponseMapper _mapper;
 
   public GetWorkspaceCommand(
@@ -29,7 +28,6 @@ public class GetWorkspaceCommand : IGetWorkspaceCommand
     IWorkspaceResponseMapper mapper)
   {
     _repository = repository;
-    _accessValidator = accessValidator;
     _httpContextAccessor = httpContextAccessor;
     _responseCreator = responseCreator;
     _mapper = mapper;

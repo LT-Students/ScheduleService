@@ -17,16 +17,13 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
   private readonly IWorkspaceRepository _repository;
   private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly IResponseCreator _responseCreator;
-  private readonly IAccessValidator _accessValidator;
 
   public RemoveWorkspaceCommand(
     IWorkspaceRepository repository,
-    IAccessValidator accessValidator,
     IHttpContextAccessor httpContextAccessor,
     IResponseCreator responseCreator)
   {
     _repository = repository;
-    _accessValidator = accessValidator;
     _httpContextAccessor = httpContextAccessor;
     _responseCreator = responseCreator;
   }

@@ -6,6 +6,6 @@ using System;
 namespace LT.DigitalOffice.ScheduleService.Validation.Workspace.Interfaces;
 
 [AutoInject]
-public interface IUpdateWorkspaceRequestValidator : IValidator<EditWorkspaceRequest>
+public interface IUpdateWorkspaceRequestValidator : IValidator<(Guid, EditWorkspaceRequest)>
 {
 }

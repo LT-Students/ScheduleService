@@ -112,19 +112,19 @@ public class WorkspaceRepository : IWorkspaceRepository
     return true;
   }
 
-  public Task<bool> ExistAsync(Guid id)
+  public Task<bool> WorkspaceExist(Guid id)
   {
     return _provider.Workspaces.AnyAsync(x => x.Id == id && x.IsActive);
   }
 
-  public Task<bool> NameExistAsync(string name, Guid? workspaceId = null)
+  public Task<bool> NameExist(string name, Guid? workspaceId = null)
   {
     return workspaceId.HasValue
       ? _provider.Workspaces.AnyAsync(d => d.Name == name && d.Id != workspaceId)
       : _provider.Workspaces.AnyAsync(d => d.Name == name);
   }
 
-  public Task<bool> IdExistAsync(Guid id)
+  public Task<bool> IdExist(Guid id)
   {
     return _provider.Workspaces.AnyAsync(w => w.Id == id);
   }
