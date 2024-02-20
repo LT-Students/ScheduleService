@@ -58,11 +58,9 @@ public class EditWorkspaceCommand : IEditWorkspaceCommand
         validationResult.Errors.Select(v => v.ErrorMessage).ToList());
     }
 
-    OperationResultResponse<bool> response = new()
+    return new OperationResultResponse<bool>()
     {
       Body = await _repository.EditAsync(id, modifiedBy, _mapper.Map(request))
     };
-
-    return response;
   }
 }

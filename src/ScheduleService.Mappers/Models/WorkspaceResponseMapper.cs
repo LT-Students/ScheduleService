@@ -8,13 +8,11 @@ public class WorkspaceResponseMapper : IWorkspaceResponseMapper
 {
   public WorkspaceResponse Map(DbWorkspace dbWorkspace)
   {
-    return dbWorkspace is null
-      ? default
-      : new WorkspaceResponse
-      {
-        Id = dbWorkspace.Id,
-        Name = dbWorkspace.Name,
-        IsActive = dbWorkspace.IsActive
-      };
+    return new WorkspaceResponse
+    {
+      Id = dbWorkspace.Id,
+      Name = dbWorkspace.Name,
+      IsActive = dbWorkspace.IsActive
+    };
   }
 }

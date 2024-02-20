@@ -10,17 +10,15 @@ public class DbWorkspaceMapper : IDbWorkspaceMapper
 {
   public DbWorkspace Map(CreateWorkspaceRequest request, Guid userId)
   {
-    return request is null
-      ? null
-      : new DbWorkspace
-      {
-        Id = Guid.NewGuid(),
-        Name = request.Name,
-        CreatedBy = userId,
-        CreatedAtUtc = DateTime.UtcNow,
-        ModifiedBy = userId,
-        ModifiedAtUtc = DateTime.UtcNow,
-        IsActive = true
-      };
+    return new DbWorkspace
+    {
+      Id = Guid.NewGuid(),
+      Name = request.Name,
+      CreatedBy = userId,
+      CreatedAtUtc = DateTime.UtcNow,
+      ModifiedBy = userId,
+      ModifiedAtUtc = DateTime.UtcNow,
+      IsActive = true
+    };
   }
 }

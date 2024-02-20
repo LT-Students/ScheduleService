@@ -10,11 +10,6 @@ public class PatchDbWorspaceMapper : IPatchDbWorkspaceMapper
 {
   public JsonPatchDocument<DbWorkspace> Map(JsonPatchDocument<EditWorkspaceRequest> request)
   {
-    if (request is null)
-    {
-      return null;
-    }
-
     JsonPatchDocument<DbWorkspace> result = new();
 
     foreach (Operation<EditWorkspaceRequest> item in request.Operations)

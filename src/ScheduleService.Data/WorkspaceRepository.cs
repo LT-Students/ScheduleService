@@ -46,9 +46,9 @@ public class WorkspaceRepository : IWorkspaceRepository
         : dbWorkspaces.OrderByDescending(w => w.Name);
     }
 
-    if (!string.IsNullOrWhiteSpace(filter.NameIncludeSubstring))
+    if (!string.IsNullOrWhiteSpace(filter.nameIncludeSubstring))
     {
-      dbWorkspaces = dbWorkspaces.Where(w => w.Name.Contains(filter.NameIncludeSubstring));
+      dbWorkspaces = dbWorkspaces.Where(w => w.Name.Contains(filter.nameIncludeSubstring));
     }
 
     return (await dbWorkspaces.ToListAsync(), await dbWorkspaces.CountAsync());
@@ -61,11 +61,6 @@ public class WorkspaceRepository : IWorkspaceRepository
 
   public async Task<bool> RemoveAsync(DbWorkspace dbWorkspace, Guid modifiedBy)
   {
-    if (dbWorkspace is null)
-    {
-      return false;
-    }
-
     dbWorkspace.IsActive = false;
     dbWorkspace.ModifiedBy = modifiedBy;
     dbWorkspace.ModifiedAtUtc = DateTime.UtcNow;

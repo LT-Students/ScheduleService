@@ -49,7 +49,7 @@ public class CreateWorkspaceCommand : ICreateWorkspaceCommand
     {
       return _responseCreator.CreateFailureResponse<Guid?>(
         HttpStatusCode.BadRequest,
-        validationResult.Errors.Select(v => v.ErrorMessage).ToList());
+        validationResult.Errors.ConvertAll(v => v.ErrorMessage).ToList());
     }
 
     OperationResultResponse<Guid?> response = new();
@@ -59,8 +59,7 @@ public class CreateWorkspaceCommand : ICreateWorkspaceCommand
 
     if (response.Body is null)
     {
-      response = _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.BadRequest);
-      return response;
+      return response = _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.BadRequest);
     }
 
     _httpContextAccessor.HttpContext.Response.StatusCode = (int)HttpStatusCode.Created;
