@@ -45,7 +45,7 @@ public class EditWorkspaceCommand : IEditWorkspaceCommand
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
     DbWorkspace dbWorkspace = await _repository.GetAsync(id);
 
-    if (!(modifiedBy == dbWorkspace.CreatedBy))
+    if (modifiedBy != dbWorkspace.CreatedBy)
     {
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
     }

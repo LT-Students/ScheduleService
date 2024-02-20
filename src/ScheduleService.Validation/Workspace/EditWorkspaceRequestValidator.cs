@@ -55,7 +55,7 @@ public class EditWorkspaceRequestValidator : ExtendedEditRequestValidator<Guid, 
       {
         {
           async x =>
-          !await _workspaceRepository.NameExist(x.value?.ToString(), workspaceId),
+          !await _workspaceRepository.IsNameExists(x.value?.ToString(), workspaceId),
           "The workspace name already exist."
         }
       });

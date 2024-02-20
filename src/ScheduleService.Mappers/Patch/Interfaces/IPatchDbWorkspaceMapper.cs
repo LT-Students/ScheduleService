@@ -8,5 +8,5 @@ namespace LT.DigitalOffice.ScheduleService.Mappers.Patch.Interfaces;
 [AutoInject]
 public interface IPatchDbWorkspaceMapper
 {
-  public JsonPatchDocument<DbWorkspace> Map(JsonPatchDocument<EditWorkspaceRequest> request);
+  JsonPatchDocument<DbWorkspace> Map(JsonPatchDocument<EditWorkspaceRequest> request);
 }

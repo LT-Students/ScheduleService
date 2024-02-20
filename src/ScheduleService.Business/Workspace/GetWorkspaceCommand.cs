@@ -22,7 +22,6 @@ public class GetWorkspaceCommand : IGetWorkspaceCommand
 
   public GetWorkspaceCommand(
     IWorkspaceRepository repository,
-    IAccessValidator accessValidator,
     IHttpContextAccessor httpContextAccessor,
     IResponseCreator responseCreator,
     IWorkspaceResponseMapper mapper)
@@ -42,8 +41,6 @@ public class GetWorkspaceCommand : IGetWorkspaceCommand
       return _responseCreator.CreateFailureResponse<WorkspaceResponse>(HttpStatusCode.NotFound);
     }
 
-    WorkspaceResponse response = _mapper.Map(dbWorkspace);
-
-    return new OperationResultResponse<WorkspaceResponse>(response);
+    return new OperationResultResponse<WorkspaceResponse>(_mapper.Map(dbWorkspace));
   }
 }
