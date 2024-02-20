@@ -37,12 +37,10 @@ public class FindWorkspacesCommand : IFindWorkspacesCommand
       return new FindResultResponse<WorkspaceResponse>();
     }
 
-    FindResultResponse<WorkspaceResponse> response = new()
+    return new FindResultResponse<WorkspaceResponse>
     {
       Body = dbWorkspaces.ConvertAll(dbWorkspace => _responseMapper.Map(dbWorkspace)).ToList(),
       TotalCount = totalCount
     };
-
-    return response;
   }
 }

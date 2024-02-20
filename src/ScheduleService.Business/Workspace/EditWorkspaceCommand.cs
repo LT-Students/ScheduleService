@@ -22,6 +22,7 @@ public class EditWorkspaceCommand : IEditWorkspaceCommand
 {
   private readonly IWorkspaceRepository _repository;
   private readonly IEditWorkspaceRequestValidator _validator;
+  private readonly IAccessValidator _accessValidator;
   private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly IResponseCreator _responseCreator;
   private readonly IPatchDbWorkspaceMapper _mapper;
@@ -31,19 +32,22 @@ public class EditWorkspaceCommand : IEditWorkspaceCommand
     IHttpContextAccessor httpContextAccessor,
     IResponseCreator responseCreator,
     IPatchDbWorkspaceMapper mapper,
-    IEditWorkspaceRequestValidator validator)
+    IEditWorkspaceRequestValidator validator,
+    IAccessValidator accessValidator)
   {
     _repository = repository;
     _httpContextAccessor = httpContextAccessor;
     _responseCreator = responseCreator;
     _mapper = mapper;
     _validator = validator;
+    _accessValidator = accessValidator;
   }
 
   public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, JsonPatchDocument<EditWorkspaceRequest> request)
   {
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
     DbWorkspace dbWorkspace = await _repository.GetAsync(id);
+    bool isAdmin = await _accessValidator.IsAdminAsync(modifiedBy);
 
     if (modifiedBy != dbWorkspace.CreatedBy)
     {

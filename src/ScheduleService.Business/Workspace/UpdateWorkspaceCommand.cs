@@ -42,6 +42,7 @@ public class UpdateWorkspaceCommand : IUpdateWorkspaceCommand
   {
     ValidationResult validationResult = await _validator.ValidateAsync((id, request));
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
+    bool isAdmin = await _accessValidator.IsAdminAsync(modifiedBy);
 
     if (!validationResult.IsValid)
     {
@@ -51,16 +52,14 @@ public class UpdateWorkspaceCommand : IUpdateWorkspaceCommand
 
     DbWorkspace dbWorkspace = await _repository.GetAsync(id);
 
-    if (!(modifiedBy == dbWorkspace.CreatedBy))
+    if (modifiedBy != dbWorkspace.CreatedBy || !isAdmin)
     {
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
     }
 
-    OperationResultResponse<bool> response = new()
+    return new OperationResultResponse<bool>
     {
       Body = await _repository.UpdateAsync(id, modifiedBy, request)
     };
-
-    return response;
   }
 }

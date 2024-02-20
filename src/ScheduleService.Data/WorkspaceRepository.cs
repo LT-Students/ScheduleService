@@ -51,7 +51,7 @@ public class WorkspaceRepository : IWorkspaceRepository
       dbWorkspaces = dbWorkspaces.Where(w => w.Name.Contains(filter.nameIncludeSubstring));
     }
 
-    return (await dbWorkspaces.ToListAsync(), await dbWorkspaces.CountAsync());
+    return (await dbWorkspaces.Skip(filter.SkipCount).Take(filter.TakeCount).ToListAsync(), await dbWorkspaces.CountAsync());
   }
 
   public Task<DbWorkspace> GetAsync(Guid id)
@@ -117,10 +117,5 @@ public class WorkspaceRepository : IWorkspaceRepository
     return workspaceId.HasValue
       ? _provider.Workspaces.AnyAsync(d => d.Name == name && d.Id != workspaceId)
       : _provider.Workspaces.AnyAsync(d => d.Name == name);
-  }
-
-  public Task<bool> IsIdExists(Guid id)
-  {
-    return _provider.Workspaces.AnyAsync(w => w.Id == id);
   }
 }

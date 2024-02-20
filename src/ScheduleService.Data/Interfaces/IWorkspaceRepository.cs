@@ -27,6 +27,4 @@ public interface IWorkspaceRepository
   Task<bool> IsWorkspaceExists(Guid id);
 
   Task<bool> IsNameExists(string name, Guid? workspaceId = null);
-
-  Task<bool> IsIdExists(Guid id);
 }

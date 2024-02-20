@@ -17,23 +17,27 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
   private readonly IWorkspaceRepository _repository;
   private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly IResponseCreator _responseCreator;
+  private readonly IAccessValidator _accessValidator;
 
   public RemoveWorkspaceCommand(
     IWorkspaceRepository repository,
     IHttpContextAccessor httpContextAccessor,
-    IResponseCreator responseCreator)
+    IResponseCreator responseCreator,
+    IAccessValidator accessValidator)
   {
     _repository = repository;
     _httpContextAccessor = httpContextAccessor;
     _responseCreator = responseCreator;
+    _accessValidator = accessValidator;
   }
 
   public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
   {
     DbWorkspace dbWorkspace = await _repository.GetAsync(id);
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
+    bool isAdmin = await _accessValidator.IsAdminAsync(modifiedBy);
 
-    if (!(modifiedBy == dbWorkspace.CreatedBy))
+    if (modifiedBy != dbWorkspace.CreatedBy || !isAdmin)
     {
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
     }
@@ -43,11 +47,9 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
     }
 
-    OperationResultResponse<bool> response = new()
+    return new OperationResultResponse<bool>
     {
       Body = await _repository.RemoveAsync(dbWorkspace, modifiedBy)
     };
-
-    return response;
   }
 }
