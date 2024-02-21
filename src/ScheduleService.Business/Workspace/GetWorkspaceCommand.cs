@@ -16,18 +16,15 @@ namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
 public class GetWorkspaceCommand : IGetWorkspaceCommand
 {
   private readonly IWorkspaceRepository _repository;
-  private readonly IHttpContextAccessor _httpContextAccessor;
   private readonly IResponseCreator _responseCreator;
   private readonly IWorkspaceResponseMapper _mapper;
 
   public GetWorkspaceCommand(
     IWorkspaceRepository repository,
-    IHttpContextAccessor httpContextAccessor,
     IResponseCreator responseCreator,
     IWorkspaceResponseMapper mapper)
   {
     _repository = repository;
-    _httpContextAccessor = httpContextAccessor;
     _responseCreator = responseCreator;
     _mapper = mapper;
   }

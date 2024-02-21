@@ -32,7 +32,7 @@ public class FindWorkspacesCommand : IFindWorkspacesCommand
   {
     (List<DbWorkspace> dbWorkspaces, int totalCount) = await _repository.FindAsync(filter);
 
-    if (dbWorkspaces is null || dbWorkspaces.Count() != 0)
+    if (dbWorkspaces is null || dbWorkspaces.Count() == 0)
     {
       return new FindResultResponse<WorkspaceResponse>();
     }
