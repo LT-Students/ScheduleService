@@ -53,7 +53,7 @@ public class WorkspacesController : ControllerBase
   [HttpPost("create")]
   [SwaggerOperationFilter(typeof(TokenOperationFilter))]
   [ProducesResponseType(typeof(OperationResultResponse<Guid?>), StatusCodes.Status201Created)]
-  [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+  [ProducesResponseType(typeof(OperationResultResponse<Guid?>), StatusCodes.Status400BadRequest)]
   [ProducesResponseType(StatusCodes.Status401Unauthorized)]
   public async Task<OperationResultResponse<Guid?>> CreateAsync(
     [FromServices] ICreateWorkspaceCommand command,
