@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Http;
 namespace LT.DigitalOffice.DepartmentService.Controllers;
 
 [Route("[controller]")]
+[Produces("application/json")]
+[Consumes("application/json")]
 [ApiController]
 public class WorkspacesController : ControllerBase
 {
