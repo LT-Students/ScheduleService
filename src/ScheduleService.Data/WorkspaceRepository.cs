@@ -54,9 +54,9 @@ public class WorkspaceRepository : IWorkspaceRepository
     return (await dbWorkspaces.Skip(filter.SkipCount).Take(filter.TakeCount).ToListAsync(), await dbWorkspaces.CountAsync());
   }
 
-  public Task<DbWorkspace> GetAsync(Guid id)
+  public async Task<DbWorkspace> GetAsync(Guid id)
   {
-    return _provider.Workspaces.FirstOrDefaultAsync(x => x.Id == id);
+    return await _provider.Workspaces.FirstOrDefaultAsync(x => x.Id == id);
   }
 
   public async Task<bool> RemoveAsync(DbWorkspace dbWorkspace, Guid modifiedBy)
@@ -107,15 +107,15 @@ public class WorkspaceRepository : IWorkspaceRepository
     return true;
   }
 
-  public Task<bool> IsWorkspaceExists(Guid id)
+  public async Task<bool> IsWorkspaceExistsAsync(Guid id)
   {
-    return _provider.Workspaces.AnyAsync(x => x.Id == id && x.IsActive);
+    return await _provider.Workspaces.AnyAsync(x => x.Id == id && x.IsActive);
   }
 
-  public Task<bool> IsNameExists(string name, Guid? workspaceId = null)
+  public async Task<bool> IsNameExistsAsync(string name, Guid? workspaceId = null)
   {
     return workspaceId.HasValue
-      ? _provider.Workspaces.AnyAsync(d => d.Name == name && d.Id != workspaceId)
-      : _provider.Workspaces.AnyAsync(d => d.Name == name);
+      ? await  _provider.Workspaces.AnyAsync(d => d.Name == name && d.Id != workspaceId)
+      : await _provider.Workspaces.AnyAsync(d => d.Name == name);
   }
 }

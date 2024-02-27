@@ -24,7 +24,7 @@ public interface IWorkspaceRepository
 
   Task<bool> RemoveAsync(DbWorkspace dbWorkspace, Guid modifiedBy);
 
-  Task<bool> IsWorkspaceExists(Guid id);
+  Task<bool> IsWorkspaceExistsAsync(Guid id);
 
-  Task<bool> IsNameExists(string name, Guid? workspaceId = null);
+  Task<bool> IsNameExistsAsync(string name, Guid? workspaceId = null);
 }

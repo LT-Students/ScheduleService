@@ -43,7 +43,7 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
     bool isAdmin = await _accessValidator.IsAdminAsync(modifiedBy);
 
-    if (modifiedBy != dbWorkspace.CreatedBy || !isAdmin)
+    if (modifiedBy != dbWorkspace.CreatedBy && !isAdmin)
     {
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
     }

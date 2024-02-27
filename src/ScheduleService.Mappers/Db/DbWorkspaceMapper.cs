@@ -16,8 +16,6 @@ public class DbWorkspaceMapper : IDbWorkspaceMapper
       Name = request.Name,
       CreatedBy = userId,
       CreatedAtUtc = DateTime.UtcNow,
-      ModifiedBy = userId,
-      ModifiedAtUtc = DateTime.UtcNow,
       IsActive = true
     };
   }

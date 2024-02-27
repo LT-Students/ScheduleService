@@ -49,7 +49,7 @@ public class EditWorkspaceCommand : IEditWorkspaceCommand
     DbWorkspace dbWorkspace = await _repository.GetAsync(id);
     bool isAdmin = await _accessValidator.IsAdminAsync(modifiedBy);
 
-    if (modifiedBy != dbWorkspace.CreatedBy)
+    if (modifiedBy != dbWorkspace.CreatedBy && !isAdmin)
     {
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
     }
