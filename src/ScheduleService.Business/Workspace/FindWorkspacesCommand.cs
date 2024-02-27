@@ -16,16 +16,13 @@ public class FindWorkspacesCommand : IFindWorkspacesCommand
 {
   private readonly IWorkspaceRepository _repository;
   private readonly IWorkspaceResponseMapper _responseMapper;
-  private readonly IHttpContextAccessor _httpContextAccessor;
 
   public FindWorkspacesCommand(
     IWorkspaceRepository repository,
-    IWorkspaceResponseMapper responseMapper,
-    IHttpContextAccessor httpContextAccessor)
+    IWorkspaceResponseMapper responseMapper)
   {
     _repository = repository;
     _responseMapper = responseMapper;
-    _httpContextAccessor = httpContextAccessor;
   }
 
   public async Task<FindResultResponse<WorkspaceResponse>> ExecuteAsync(FindWorkspaceFilter filter)

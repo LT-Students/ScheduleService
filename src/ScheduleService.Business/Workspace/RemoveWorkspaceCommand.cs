@@ -34,17 +34,18 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
   public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
   {
     DbWorkspace dbWorkspace = await _repository.GetAsync(id);
+
+    if (dbWorkspace is null)
+    {
+      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
+    }
+
     Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
     bool isAdmin = await _accessValidator.IsAdminAsync(modifiedBy);
 
     if (modifiedBy != dbWorkspace.CreatedBy || !isAdmin)
     {
       return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-    }
-
-    if (dbWorkspace is null)
-    {
-      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
     }
 
     return new OperationResultResponse<bool>

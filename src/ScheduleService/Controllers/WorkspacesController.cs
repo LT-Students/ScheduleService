@@ -26,8 +26,8 @@ public class WorkspacesController : ControllerBase
   [HttpGet("get")]
   [SwaggerOperationFilter(typeof(TokenOperationFilter))]
   [ProducesResponseType(typeof(OperationResultResponse<WorkspaceResponse>), StatusCodes.Status200OK)]
-  [ProducesResponseType(typeof(OperationResultResponse<WorkspaceResponse>), StatusCodes.Status404NotFound)]
   [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+  [ProducesResponseType(typeof(OperationResultResponse<WorkspaceResponse>), StatusCodes.Status404NotFound)]
   public async Task<OperationResultResponse<WorkspaceResponse>> GetAsync(
     [FromServices] IGetWorkspaceCommand command,
     [FromQuery] Guid id)

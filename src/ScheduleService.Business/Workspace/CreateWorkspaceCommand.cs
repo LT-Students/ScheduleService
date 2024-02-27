@@ -59,7 +59,7 @@ public class CreateWorkspaceCommand : ICreateWorkspaceCommand
 
     if (response.Body is null)
     {
-      return response = _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.BadRequest);
+      return _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.BadRequest);
     }
 
     _httpContextAccessor.HttpContext.Response.StatusCode = (int)HttpStatusCode.Created;
