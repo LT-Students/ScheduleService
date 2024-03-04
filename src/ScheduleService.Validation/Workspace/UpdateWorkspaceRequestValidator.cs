@@ -14,7 +14,7 @@ public class UpdateWorkspaceRequestValidator : AbstractValidator<(Guid, EditWork
   {
     RuleFor(request => request.Item2.Name)
       .NotEmpty()
-      .MaximumLength(100).WithMessage("Name too long.");
+      .MaximumLength(100).WithMessage("Name is too long.");
 
     RuleFor(tuple => tuple)
       .MustAsync(async (tuple, cancellationToken) => !await repository.IsNameExistsAsync(tuple.Item2.Name, tuple.Item1, cancellationToken))

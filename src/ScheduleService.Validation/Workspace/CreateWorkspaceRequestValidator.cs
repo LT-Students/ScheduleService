@@ -12,7 +12,8 @@ public class CreateWorkspaceRequestValidator : AbstractValidator<CreateWorkspace
   {
     RuleFor(request => request.Name)
       .NotEmpty()
-      .MaximumLength(100).WithMessage("Name is too long")
-      .MustAsync(async (request, cancellationToken) => !await repository.IsNameExistsAsync(name: request, cancellationToken : cancellationToken));
+      .MaximumLength(100).WithMessage("Name is too long.")
+      .MustAsync(async (request, cancellationToken) => !await repository.IsNameExistsAsync(name: request, cancellationToken : cancellationToken))
+      .WithMessage("Name already exist.");
   }
 }
