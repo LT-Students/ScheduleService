@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.JsonPatch.Operations;
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace LT.DigitalOffice.ScheduleService.Validation.Workspace;
 
@@ -45,7 +46,7 @@ public class EditWorkspaceRequestValidator : ExtendedEditRequestValidator<Guid, 
       new()
       {
         {x  => !string.IsNullOrEmpty(x.value?.ToString().Trim()), "Empty Name."},
-        {x => x.value?.ToString().Length < 100, "Name is too long." },
+        {x => x.value?.ToString().Length < 101, "Name is too long." },
       }, CascadeMode.Stop);
 
     await AddFailureForPropertyIfNotAsync(

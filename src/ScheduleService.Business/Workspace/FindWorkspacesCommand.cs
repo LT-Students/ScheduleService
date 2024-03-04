@@ -9,6 +9,7 @@ using LT.DigitalOffice.ScheduleService.Models.Db;
 using System.Linq;
 using LT.DigitalOffice.ScheduleService.Mappers.Models.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
+using System.Threading;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
 
@@ -25,9 +26,9 @@ public class FindWorkspacesCommand : IFindWorkspacesCommand
     _responseMapper = responseMapper;
   }
 
-  public async Task<FindResultResponse<WorkspaceResponse>> ExecuteAsync(FindWorkspaceFilter filter)
+  public async Task<FindResultResponse<WorkspaceResponse>> ExecuteAsync(FindWorkspaceFilter filter, CancellationToken cancellationToken = default)
   {
-    (List<DbWorkspace> dbWorkspaces, int totalCount) = await _repository.FindAsync(filter);
+    (List<DbWorkspace> dbWorkspaces, int totalCount) = await _repository.FindAsync(filter, cancellationToken);
 
     if (dbWorkspaces is null || dbWorkspaces.Count == 0)
     {
@@ -36,7 +37,7 @@ public class FindWorkspacesCommand : IFindWorkspacesCommand
 
     return new FindResultResponse<WorkspaceResponse>
     {
-      Body = dbWorkspaces.ConvertAll(dbWorkspace => _responseMapper.Map(dbWorkspace)),
+      Body = dbWorkspaces.ConvertAll(_responseMapper.Map),
       TotalCount = totalCount
     };
   }

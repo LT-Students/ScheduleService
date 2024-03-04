@@ -6,6 +6,7 @@ using LT.DigitalOffice.ScheduleService.Models.Db;
 using LT.DigitalOffice.Kernel.Attributes;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace.Filters;
+using System.Threading;
 
 namespace LT.DigitalOffice.ScheduleService.Data.Interfaces;
 
@@ -14,9 +15,9 @@ public interface IWorkspaceRepository
 {
   Task<Guid?> CreateAsync(DbWorkspace board);
 
-  Task<(List<DbWorkspace>, int totalCount)> FindAsync(FindWorkspaceFilter filter);
+  Task<(List<DbWorkspace>, int totalCount)> FindAsync(FindWorkspaceFilter filter, CancellationToken cancellationToken);
 
-  Task<DbWorkspace> GetAsync(Guid id);
+  Task<DbWorkspace> GetAsync(Guid id, CancellationToken cancellationToken = default);
 
   Task<bool> EditAsync(Guid id, Guid modifiedBy, JsonPatchDocument<DbWorkspace> dbWorkspace);
 
@@ -26,5 +27,5 @@ public interface IWorkspaceRepository
 
   Task<bool> IsWorkspaceExistsAsync(Guid id);
 
-  Task<bool> IsNameExistsAsync(string name, Guid? workspaceId = null);
+  Task<bool> IsNameExistsAsync(string name, Guid? workspaceId = null, CancellationToken cancellationToken = default);
 }

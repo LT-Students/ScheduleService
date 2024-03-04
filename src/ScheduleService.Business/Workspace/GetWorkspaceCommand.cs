@@ -9,6 +9,7 @@ using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
@@ -29,9 +30,9 @@ public class GetWorkspaceCommand : IGetWorkspaceCommand
     _mapper = mapper;
   }
 
-  public async Task<OperationResultResponse<WorkspaceResponse>> ExecuteAsync(Guid id)
+  public async Task<OperationResultResponse<WorkspaceResponse>> ExecuteAsync(Guid id, CancellationToken cancellationToken = default)
   {
-    DbWorkspace dbWorkspace = await _repository.GetAsync(id);
+    DbWorkspace dbWorkspace = await _repository.GetAsync(id, cancellationToken);
 
     if (dbWorkspace is null)
     {

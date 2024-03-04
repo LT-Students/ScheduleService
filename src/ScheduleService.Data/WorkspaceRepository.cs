@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Data;
@@ -30,7 +31,9 @@ public class WorkspaceRepository : IWorkspaceRepository
     return workspace.Id;
   }
 
-  public async Task<(List<DbWorkspace>, int totalCount)> FindAsync(FindWorkspaceFilter filter)
+  public async Task<(List<DbWorkspace>, int totalCount)> FindAsync(
+    FindWorkspaceFilter filter,
+    CancellationToken cancellationToken = default)
   {
     IQueryable<DbWorkspace> dbWorkspaces = _provider.Workspaces.AsQueryable();
 
@@ -51,12 +54,14 @@ public class WorkspaceRepository : IWorkspaceRepository
       dbWorkspaces = dbWorkspaces.Where(w => w.Name.Contains(filter.nameIncludeSubstring));
     }
 
-    return (await dbWorkspaces.Skip(filter.SkipCount).Take(filter.TakeCount).ToListAsync(), await dbWorkspaces.CountAsync());
+    return (
+      await dbWorkspaces.Skip(filter.SkipCount).Take(filter.TakeCount).ToListAsync(cancellationToken),
+      await dbWorkspaces.CountAsync(cancellationToken));
   }
 
-  public async Task<DbWorkspace> GetAsync(Guid id)
+  public async Task<DbWorkspace> GetAsync(Guid id, CancellationToken cancellationToken = default)
   {
-    return await _provider.Workspaces.FirstOrDefaultAsync(x => x.Id == id);
+    return await _provider.Workspaces.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
   }
 
   public async Task<bool> RemoveAsync(DbWorkspace dbWorkspace, Guid modifiedBy)
@@ -112,10 +117,10 @@ public class WorkspaceRepository : IWorkspaceRepository
     return await _provider.Workspaces.AnyAsync(x => x.Id == id && x.IsActive);
   }
 
-  public async Task<bool> IsNameExistsAsync(string name, Guid? workspaceId = null)
+  public async Task<bool> IsNameExistsAsync(string name, Guid? workspaceId = null, CancellationToken cancellationToken = default)
   {
     return workspaceId.HasValue
-      ? await  _provider.Workspaces.AnyAsync(d => d.Name == name && d.Id != workspaceId)
-      : await _provider.Workspaces.AnyAsync(d => d.Name == name);
+      ? await  _provider.Workspaces.AnyAsync(d => d.Name == name && d.Id != workspaceId, cancellationToken)
+      : await _provider.Workspaces.AnyAsync(d => d.Name == name, cancellationToken);
   }
 }
