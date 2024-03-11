@@ -49,7 +49,7 @@ public class CreateWorkspaceCommand : ICreateWorkspaceCommand
     {
       return _responseCreator.CreateFailureResponse<Guid?>(
         HttpStatusCode.BadRequest,
-        validationResult.Errors.ConvertAll(v => v.ErrorMessage).ToList());
+        validationResult.Errors.Select(v => v.ErrorMessage).ToList());
     }
 
     OperationResultResponse<Guid?> response = new();
