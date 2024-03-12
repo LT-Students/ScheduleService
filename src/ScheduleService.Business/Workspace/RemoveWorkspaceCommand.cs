@@ -1,10 +1,13 @@
 ﻿using LT.DigitalOffice.Kernel.BrokerSupport.AccessValidatorEngine.Interfaces;
+using LT.DigitalOffice.Kernel.Extensions;
 using LT.DigitalOffice.Kernel.Helpers.Interfaces;
 using LT.DigitalOffice.Kernel.Responses;
 using LT.DigitalOffice.ScheduleService.Business.Workspace.Interfaces;
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
+using LT.DigitalOffice.ScheduleService.Models.Db;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Workspace;
@@ -18,18 +21,35 @@ public class RemoveWorkspaceCommand : IRemoveWorkspaceCommand
 
   public RemoveWorkspaceCommand(
     IWorkspaceRepository repository,
-    IAccessValidator accessValidator,
     IHttpContextAccessor httpContextAccessor,
-    IResponseCreator responseCreator)
+    IResponseCreator responseCreator,
+    IAccessValidator accessValidator)
   {
     _repository = repository;
-    _accessValidator = accessValidator;
     _httpContextAccessor = httpContextAccessor;
     _responseCreator = responseCreator;
+    _accessValidator = accessValidator;
   }
 
-  public Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
+  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
   {
-    throw new NotImplementedException();
+    DbWorkspace dbWorkspace = await _repository.GetAsync(id);
+
+    if (dbWorkspace is null)
+    {
+      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
+    }
+
+    Guid modifiedBy = _httpContextAccessor.HttpContext.GetUserId();
+
+    if (modifiedBy != dbWorkspace.CreatedBy && !await _accessValidator.IsAdminAsync(modifiedBy))
+    {
+      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+    }
+
+    return new OperationResultResponse<bool>
+    {
+      Body = await _repository.RemoveAsync(dbWorkspace, modifiedBy)
+    };
   }
 }

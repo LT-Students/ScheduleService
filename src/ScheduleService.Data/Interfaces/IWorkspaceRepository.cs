@@ -4,21 +4,28 @@ using System.Threading.Tasks;
 using System;
 using LT.DigitalOffice.ScheduleService.Models.Db;
 using LT.DigitalOffice.Kernel.Attributes;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace.Filters;
+using System.Threading;
 
 namespace LT.DigitalOffice.ScheduleService.Data.Interfaces;
 
 [AutoInject]
 public interface IWorkspaceRepository
 {
-  Task CreateAsync(DbWorkspace board);
+  Task<Guid?> CreateAsync(DbWorkspace board);
 
-  Task<List<DbWorkspace>> GetAllAsync();
+  Task<(List<DbWorkspace>, int totalCount)> FindAsync(FindWorkspaceFilter filter, CancellationToken cancellationToken);
 
-  Task<DbWorkspace> GetAsync(Guid id);
+  Task<DbWorkspace> GetAsync(Guid id, CancellationToken cancellationToken = default);
 
-  Task<bool> EditByIdAsync(Guid id, JsonPatchDocument<DbWorkspace> dbWorkspace);
+  Task<bool> EditAsync(Guid id, Guid modifiedBy, JsonPatchDocument<DbWorkspace> dbWorkspace);
 
-  Task<bool> UpdateByIdAsync(Guid id, DbWorkspace dbWorkspace);
+  Task<bool> UpdateAsync(Guid id, Guid ModifiedBy, EditWorkspaceRequest request);
 
-  Task<bool> RemoveAsync(Guid id);
+  Task<bool> RemoveAsync(DbWorkspace dbWorkspace, Guid modifiedBy);
+
+  Task<bool> IsWorkspaceExistsAsync(Guid id);
+
+  Task<bool> IsNameExistsAsync(string name, Guid? workspaceId = null, CancellationToken cancellationToken = default);
 }
