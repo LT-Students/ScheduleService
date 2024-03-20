@@ -25,9 +25,9 @@ public class FindCategoriesCommand : IFindCategoriesCommand
     _mapper = mapper;
   }
 
-  public async Task<FindResultResponse<CategoryResponse>> ExecuteAsync(FindCategoriesFilter filter, CancellationToken cancellationToken = default)
+  public async Task<FindResultResponse<CategoryResponse>> ExecuteAsync(FindCategoriesFilter filter, CancellationToken ct = default)
   {
-    (List<DbCategory> dbCategories, int totalCount) = await _repository.FindAsync(filter, cancellationToken);
+    (List<DbCategory> dbCategories, int totalCount) = await _repository.FindAsync(filter, ct);
 
     if (dbCategories is null || dbCategories.Count == 0)
     {

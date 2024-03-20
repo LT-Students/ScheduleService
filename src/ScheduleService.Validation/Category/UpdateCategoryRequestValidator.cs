@@ -17,7 +17,7 @@ public  class UpdateCategoryRequestValidator : AbstractValidator<(Guid, Guid, Ed
 
     RuleFor(request => request)
       .MustAsync(async (request, cancellationToken) => !await repository.IsNameExistsAsync(name: request.Item3.Name,
-      workspaceId: request.Item1, categoryId: request.Item2, cancellationToken: cancellationToken))
+        workspaceId: request.Item1, categoryId: request.Item2, cancellationToken: cancellationToken))
       .WithMessage("Name already exist.");
   }
 }

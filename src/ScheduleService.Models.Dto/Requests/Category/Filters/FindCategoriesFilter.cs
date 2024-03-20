@@ -5,7 +5,7 @@ namespace LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category.Filters;
 
 public record FindCategoriesFilter : BaseFindFilter
 {
-  [FromQuery(Name = "IsActive")]
+  [FromQuery(Name = "isActive")]
   public bool? IsActive { get; set; }
 
   [FromQuery(Name = "isAscendingSort")]

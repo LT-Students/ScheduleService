@@ -14,7 +14,6 @@ namespace LT.DigitalOffice.ScheduleService.Validation.Category;
 public class EditCategoryRequestValidator : ExtendedEditRequestValidator<(Guid, Guid), EditCategoryRequest>, IEditCategoryRequestValidator
 {
   private readonly ICategoryRepository _categoryRepository;
-  private object x;
 
   private async System.Threading.Tasks.Task HandleInternalPropertyValidationAsync(
     Operation<EditCategoryRequest> requestedOperation,

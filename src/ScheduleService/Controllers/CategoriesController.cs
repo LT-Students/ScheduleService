@@ -16,7 +16,6 @@ namespace LT.DigitalOffice.DepartmentService.Controllers;
 [Route("[controller]")]
 [Produces("application/json")]
 [Consumes("application/json")]
-
 [ApiController]
 public class CategoriesController : ControllerBase
 {

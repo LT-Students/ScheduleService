@@ -49,13 +49,15 @@ public class CreateCategoryCommand : ICreateCategoryCommand
     {
       return _responseCreator.CreateFailureResponse<Guid?>(
         HttpStatusCode.BadRequest,
-        validationResult.Errors.Select(v => v.ErrorMessage).ToList());
+        validationResult.Errors.ConvertAll(v => v.ErrorMessage));
     }
 
-    OperationResultResponse<Guid?> response = new();
     Guid createdBy = _httpContextAccessor.HttpContext.GetUserId();
 
-    response.Body = await _repository.CreateAsync(_mapper.Map(request, createdBy));
+    OperationResultResponse<Guid?> response = new()
+    {
+      Body = await _repository.CreateAsync(_mapper.Map(request, createdBy))
+    };
 
     if (response.Body is null)
     {

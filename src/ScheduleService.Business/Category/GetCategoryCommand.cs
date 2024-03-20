@@ -37,9 +37,9 @@ public class GetCategoryCommand : IGetCategoryCommand
 		_responseCreator = responseCreator;
 	}
 
-  public async Task<OperationResultResponse<CategoryResponse>> ExecuteAsync(Guid id, CancellationToken cancellationToken = default)
+  public async Task<OperationResultResponse<CategoryResponse>> ExecuteAsync(Guid id, CancellationToken ct = default)
   {
-    DbCategory dbCategory = await _repository.GetAsync(id, cancellationToken);
+    DbCategory dbCategory = await _repository.GetAsync(id, ct);
 
     if (dbCategory is null)
     {
