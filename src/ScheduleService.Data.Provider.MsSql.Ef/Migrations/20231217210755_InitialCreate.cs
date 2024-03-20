@@ -70,7 +70,13 @@ public class InitialCreate : Migration
       {
         Id = table.Column<Guid>(nullable: false),
         Name = table.Column<string>(nullable: false, maxLength: 20),
-        Color = table.Column<string>(nullable: false, maxLength: 50),
+        Color = table.Column<int>(nullable: false, maxLength: 50),
+        WorkspaceId = table.Column<Guid>(nullable: false),
+        CreatedBy = table.Column<Guid>(nullable: false),
+        CreatedAtUtc = table.Column<DateTime>(nullable: false),
+        ModifiedBy = table.Column<Guid>(nullable: true),
+        ModifiedAtUtc = table.Column<DateTime>(nullable: true),
+        IsActive = table.Column<bool>(nullable: false),
       },
       constraints: table =>
       {

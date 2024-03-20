@@ -4,21 +4,26 @@ using System.Threading.Tasks;
 using System;
 using LT.DigitalOffice.ScheduleService.Models.Db;
 using LT.DigitalOffice.Kernel.Attributes;
+using System.Threading;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category.Filters;
+using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category;
 
 namespace LT.DigitalOffice.ScheduleService.Data.Interfaces;
 
 [AutoInject]
 public interface ICategoryRepository
 {
-  Task CreateAsync(DbCategory board);
+  Task<Guid?> CreateAsync(DbCategory dbCategory);
 
-  Task<List<DbCategory>> GetAllAsync();
+  Task<(List<DbCategory>, int totalCount)> FindAsync(FindCategoriesFilter filter, CancellationToken cancellationToken = default);
 
-  Task<DbCategory> GetAsync(Guid id);
+  Task<DbCategory> GetAsync(Guid id, CancellationToken cancellationToken = default);
 
-  Task<bool> EditAsync(Guid id, JsonPatchDocument<DbCategory> dbCategory);
+  Task<bool> EditAsync(Guid id, Guid modifiedBy, JsonPatchDocument<DbCategory> request);
 
-  Task<bool> UpdateAsync(Guid id, DbCategory dbCategory);
+  Task<bool> UpdateAsync(Guid id, Guid modifiedBy, EditCategoryRequest request);
 
-  Task<bool> RemoveAsync(Guid id);
+  Task<bool> RemoveAsync(DbCategory category, Guid modifiedBy);
+
+  Task<bool> IsNameExistsAsync(string name, Guid workspaceId, Guid? categoryId = null, CancellationToken cancellationToken = default);
 }
