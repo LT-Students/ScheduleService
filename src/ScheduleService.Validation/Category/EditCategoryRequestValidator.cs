@@ -97,7 +97,7 @@ public class EditCategoryRequestValidator : ExtendedEditRequestValidator<(Guid, 
     _categoryRepository = repository;
 
     RuleFor(x => x)
-      .CustomAsync(async (x, context, cancellationToken) =>
+      .CustomAsync(async (x, context, _) =>
       {
         foreach (var op in x.Item2.Operations)
         {

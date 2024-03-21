@@ -112,9 +112,9 @@ public class WorkspaceRepository : IWorkspaceRepository
     return true;
   }
 
-  public async Task<bool> IsWorkspaceExistsAsync(Guid id)
+  public async Task<bool> IsWorkspaceExistsAsync(Guid id, CancellationToken cancellationToken = default)
   {
-    return await _provider.Workspaces.AnyAsync(x => x.Id == id && x.IsActive);
+    return await _provider.Workspaces.AnyAsync(x => x.Id == id && x.IsActive, cancellationToken);
   }
 
   public async Task<bool> IsNameExistsAsync(string name, Guid? workspaceId = null, CancellationToken cancellationToken = default)

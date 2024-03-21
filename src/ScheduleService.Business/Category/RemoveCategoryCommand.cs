@@ -8,6 +8,7 @@ using LT.DigitalOffice.ScheduleService.Models.Db;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Category;
@@ -31,9 +32,9 @@ public class RemoveCategoryCommand : IRemoveCategoryCommand
 		_responseCreator = responseCreator;
 	}
 
-  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id)
+  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, CancellationToken ct = default)
   {
-    DbCategory dbCategory = await _repository.GetAsync(id);
+    DbCategory dbCategory = await _repository.GetAsync(id, ct);
 
     if (dbCategory is null)
     {

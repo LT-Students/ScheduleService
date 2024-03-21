@@ -19,9 +19,9 @@ public interface ICategoryRepository
 
   Task<DbCategory> GetAsync(Guid id, CancellationToken cancellationToken = default);
 
-  Task<bool> EditAsync(Guid id, Guid modifiedBy, JsonPatchDocument<DbCategory> request);
+  Task<bool> EditAsync(Guid id, Guid modifiedBy, JsonPatchDocument<DbCategory> request, CancellationToken cancellationToken = default);
 
-  Task<bool> UpdateAsync(Guid id, Guid modifiedBy, EditCategoryRequest request);
+  Task<bool> UpdateAsync(Guid id, Guid modifiedBy, EditCategoryRequest request, CancellationToken ct = default);
 
   Task<bool> RemoveAsync(DbCategory category, Guid modifiedBy);
 

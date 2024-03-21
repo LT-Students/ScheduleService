@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Category;
@@ -42,9 +43,12 @@ public class EditCategoryCommand : IEditCategoryCommand
     _validator = validator;
 	}
 
-  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, JsonPatchDocument<EditCategoryRequest> request)
+  public async Task<OperationResultResponse<bool>> ExecuteAsync(
+    Guid id,
+    JsonPatchDocument<EditCategoryRequest> request,
+    CancellationToken ct = default)
   {
-    DbCategory dbCategory = await _repository.GetAsync(id);
+    DbCategory dbCategory = await _repository.GetAsync(id, ct);
 
     if (dbCategory is null)
     {
@@ -67,7 +71,7 @@ public class EditCategoryCommand : IEditCategoryCommand
 
     return new OperationResultResponse<bool>()
     {
-      Body = await _repository.EditAsync(id, modifiedBy, _mapper.Map(request))
+      Body = await _repository.EditAsync(id, modifiedBy, _mapper.Map(request), ct)
     };
   }
 }

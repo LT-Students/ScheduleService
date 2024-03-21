@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Category;
@@ -41,9 +42,9 @@ public class CreateCategoryCommand : ICreateCategoryCommand
     _validator = validator;
   }
 
-  public async Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateCategoryRequest request)
+  public async Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateCategoryRequest request, CancellationToken ct = default)
   {
-    ValidationResult validationResult = await _validator.ValidateAsync(request);
+    ValidationResult validationResult = await _validator.ValidateAsync(request, ct);
 
     if (!validationResult.IsValid)
     {

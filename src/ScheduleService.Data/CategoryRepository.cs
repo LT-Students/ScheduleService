@@ -33,9 +33,9 @@ public class CategoryRepository : ICategoryRepository
     return dbCategory.Id;
   }
 
-  public async Task<bool> EditAsync(Guid id, Guid modifiedBy, JsonPatchDocument<DbCategory> request)
+  public async Task<bool> EditAsync(Guid id, Guid modifiedBy, JsonPatchDocument<DbCategory> request, CancellationToken ct = default)
   {
-    DbCategory dbCategory = await _provider.Categories.FirstOrDefaultAsync(c => c.Id == id);
+    DbCategory dbCategory = await _provider.Categories.FirstOrDefaultAsync(c => c.Id == id, ct);
 
     if (dbCategory is null || request is null)
     {
@@ -50,9 +50,7 @@ public class CategoryRepository : ICategoryRepository
     return true;
   }
 
-  public async Task<(List<DbCategory>, int totalCount)> FindAsync(
-    FindCategoriesFilter filter,
-    CancellationToken cancellationToken = default)
+  public async Task<(List<DbCategory>, int totalCount)> FindAsync(FindCategoriesFilter filter, CancellationToken ct = default)
   {
     IQueryable<DbCategory> dbCategories = _provider.Categories.AsQueryable();
 
@@ -74,14 +72,14 @@ public class CategoryRepository : ICategoryRepository
     }
 
     return (
-      await dbCategories.Skip(filter.SkipCount).Take(filter.TakeCount).ToListAsync(cancellationToken),
-      await dbCategories.CountAsync(cancellationToken));
+      await dbCategories.Skip(filter.SkipCount).Take(filter.TakeCount).ToListAsync(ct),
+      await dbCategories.CountAsync(ct));
 
   }
 
-  public async Task<DbCategory> GetAsync(Guid id, CancellationToken cancellationToken = default)
+  public async Task<DbCategory> GetAsync(Guid id, CancellationToken ct = default)
   {
-    return await _provider.Categories.FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
+    return await _provider.Categories.FirstOrDefaultAsync(c => c.Id == id, ct);
   }
 
   public async Task<bool> RemoveAsync(DbCategory category, Guid modifiedBy)
@@ -94,9 +92,9 @@ public class CategoryRepository : ICategoryRepository
     return true;
   }
 
-  public async Task<bool> UpdateAsync(Guid id, Guid modifiedBy, EditCategoryRequest request)
+  public async Task<bool> UpdateAsync(Guid id, Guid modifiedBy, EditCategoryRequest request, CancellationToken ct = default)
   {
-    DbCategory category = await _provider.Categories.FirstOrDefaultAsync(c => c.Id == id);
+    DbCategory category = await _provider.Categories.FirstOrDefaultAsync(c => c.Id == id, ct);
 
     if (category is null)
     {
@@ -113,10 +111,10 @@ public class CategoryRepository : ICategoryRepository
     return true;
   }
 
-  public async Task<bool> IsNameExistsAsync(string name, Guid workspaceId, Guid? categoryId = null, CancellationToken cancellationToken = default)
+  public async Task<bool> IsNameExistsAsync(string name, Guid workspaceId, Guid? categoryId = null, CancellationToken ct = default)
   {
     return categoryId.HasValue
-      ? await _provider.Categories.AnyAsync(c => c.Name == name && c.WorkspaceId == workspaceId && c.Id != categoryId, cancellationToken)
-      : await _provider.Categories.AnyAsync(c => c.Name == name && c.WorkspaceId == workspaceId, cancellationToken);
+      ? await _provider.Categories.AnyAsync(c => c.Name == name && c.WorkspaceId == workspaceId && c.Id != categoryId, ct)
+      : await _provider.Categories.AnyAsync(c => c.Name == name && c.WorkspaceId == workspaceId, ct);
   }
 }

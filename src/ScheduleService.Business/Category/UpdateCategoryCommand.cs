@@ -11,6 +11,7 @@ using LT.DigitalOffice.ScheduleService.Validation.Category.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LT.DigitalOffice.ScheduleService.Business.Category;
@@ -37,9 +38,9 @@ public class UpdateCategoryCommand : IUpdateCategoryCommand
     _validator = validator;
   }
 
-  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, EditCategoryRequest request)
+  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid id, EditCategoryRequest request, CancellationToken ct = default)
   {
-    DbCategory dbCategory = await _repository.GetAsync(id);
+    DbCategory dbCategory = await _repository.GetAsync(id, ct);
 
     if (dbCategory is null)
     {
