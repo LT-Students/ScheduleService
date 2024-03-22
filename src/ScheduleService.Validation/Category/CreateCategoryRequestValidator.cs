@@ -13,7 +13,7 @@ public class CreateCategoryRequestValidator : AbstractValidator<CreateCategoryRe
     IWorkspaceRepository workspaceRepository)
   {
     RuleFor(request => request.WorkspaceId)
-      .MustAsync(async (request, cancellationToken) => !await workspaceRepository.IsWorkspaceExistsAsync(request, cancellationToken))
+      .MustAsync(workspaceRepository.IsWorkspaceExistsAsync)
       .WithMessage("Workspace does not exist.");
 
     RuleFor(request => request.Name)
