@@ -66,7 +66,9 @@ public class EditCategoryCommand : IEditCategoryCommand
 
     if (!validationResult.IsValid)
     {
-      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.BadRequest);
+      return _responseCreator.CreateFailureResponse<bool>(
+        HttpStatusCode.BadRequest,
+        validationResult.Errors.ConvertAll(v => v.ErrorMessage));
     }
 
     return new OperationResultResponse<bool>()
