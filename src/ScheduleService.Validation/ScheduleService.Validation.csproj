@@ -7,4 +7,28 @@
     <ProjectReference Include="..\ScheduleService.Models.Dto\ScheduleService.Models.Dto.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Category\Resources\CategoryRequestValidatorResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CategoryRequestValidatorResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Workspace\Resources\WorkspaceRequestValidatorResource.Designer.cs">
+      <DependentUpon>WorkspaceRequestValidatorResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Category\Resources\CategoryRequestValidatorResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CategoryRequestValidatorResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Workspace\Resources\WorkspaceRequestValidatorResource.resx">
+      <LastGenOutput>WorkspaceRequestValidatorResource.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

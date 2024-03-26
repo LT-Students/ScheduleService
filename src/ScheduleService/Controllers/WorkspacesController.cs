@@ -9,10 +9,9 @@ using Microsoft.AspNetCore.JsonPatch;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Responses;
 using Swashbuckle.AspNetCore.Annotations;
 using DigitalOffice.Kernel.OpenApi.OperationFilters;
-using LT.DigitalOffice.Kernel.Exceptions.Models;
 using Microsoft.AspNetCore.Http;
 
-namespace LT.DigitalOffice.DepartmentService.Controllers;
+namespace LT.DigitalOffice.SheduleService.Controllers;
 
 [Route("[controller]")]
 [Produces("application/json")]

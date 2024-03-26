@@ -1,11 +1,12 @@
-﻿using LT.DigitalOffice.ScheduleService.Models.Db;
+﻿using LT.DigitalOffice.ScheduleService.Mappers.Db.Interfaces;
+using LT.DigitalOffice.ScheduleService.Models.Db;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Group;
 using Microsoft.AspNetCore.Http;
 using System;
 
 namespace LT.DigitalOffice.ScheduleService.Mappers.Db;
 
-public class DbGroupMapper
+public class DbGroupMapper : IDbGroupMapper
 {
   private readonly IHttpContextAccessor _httpContextAccessor;
 

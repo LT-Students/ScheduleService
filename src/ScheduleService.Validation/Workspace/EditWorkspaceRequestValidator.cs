@@ -9,6 +9,7 @@ using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading;
+using LT.DigitalOffice.ScheduleService.Validation.Workspace.Resources;
 
 namespace LT.DigitalOffice.ScheduleService.Validation.Workspace;
 
@@ -45,8 +46,8 @@ public class EditWorkspaceRequestValidator : ExtendedEditRequestValidator<Guid, 
       x => x == OperationType.Replace,
       new()
       {
-        {x  => !string.IsNullOrEmpty(x.value?.ToString().Trim()), "Empty Name."},
-        {x => x.value?.ToString().Length < 101, "Name is too long." },
+        {x  => !string.IsNullOrEmpty(x.value?.ToString().Trim()), WorkspaceRequestValidatorResource.EmptyName},
+        {x => x.value?.ToString().Length < 101,WorkspaceRequestValidatorResource.NameTooLong },
       }, CascadeMode.Stop);
 
     await AddFailureForPropertyIfNotAsync(
@@ -57,7 +58,7 @@ public class EditWorkspaceRequestValidator : ExtendedEditRequestValidator<Guid, 
         {
           async x =>
             !await _workspaceRepository.IsNameExistsAsync(x.value?.ToString(), workspaceId),
-            "Name already exist."
+            WorkspaceRequestValidatorResource.ExistingName
         }
       });
 
@@ -70,7 +71,7 @@ public class EditWorkspaceRequestValidator : ExtendedEditRequestValidator<Guid, 
       x => x == OperationType.Replace,
       new()
       {
-        {x => bool.TryParse(x.value?.ToString(), out bool _), "Incorrect format of IsActive."}
+        {x => bool.TryParse(x.value?.ToString(), out bool _), WorkspaceRequestValidatorResource.IncorrectIsActiveFormat}
       });
 
     #endregion

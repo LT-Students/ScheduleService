@@ -19,6 +19,7 @@ public class DbWorkspace
 
   public IList<DbGroup> Groups { get; set; } = new List<DbGroup>();
   public IList<DbTask> Tasks { get; set; } = new List<DbTask>();
+  public IList<DbCategory> Categories{ get; set; } = new List<DbCategory>();
 }
 
 public class DbWorkspaceConfiguration : IEntityTypeConfiguration<DbWorkspace>
@@ -30,6 +31,12 @@ public class DbWorkspaceConfiguration : IEntityTypeConfiguration<DbWorkspace>
 
     builder
       .HasKey(w => w.Id);
+
+    builder
+      .HasMany(c => c.Categories)
+      .WithOne(ct => ct.Workspace)
+      .HasForeignKey(t => t.WorkspaceId)
+      .HasPrincipalKey(w => w.Id);
 
     builder
       .HasMany(w => w.Tasks)

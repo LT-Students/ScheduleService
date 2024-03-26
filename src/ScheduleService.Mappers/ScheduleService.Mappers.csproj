@@ -7,8 +7,4 @@
     <ProjectReference Include="..\ScheduleService.Models.Dto\ScheduleService.Models.Dto.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Db\" />
-  </ItemGroup>
-
 </Project>

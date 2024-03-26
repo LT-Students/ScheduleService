@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LT.DigitalOffice.ScheduleService.Models.Dto.Enums;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -10,15 +11,17 @@ public class DbCategory
   public const string TableName = "Categories";
 
   public Guid Id { get; set; }
+  public Guid WorkspaceId { get; set; }
   public string Name { get; set; }
-  public string Color { get; set; }
+  public CategoryColor Color { get; set; }
   public Guid CreatedBy { get; set; }
   public DateTime CreatedAtUtc { get; set; }
-  public Guid ModifiedBy { get; set; }
-  public DateTime ModifiedAtUtc { get; set; }
+  public Guid? ModifiedBy { get; set; }
+  public DateTime? ModifiedAtUtc { get; set; }
   public bool IsActive { get; set; }
 
   public IList<DbCategoriesTask> CategoriesTask { get; set; } = new List<DbCategoriesTask>();
+  public DbWorkspace Workspace { get; set; }
 }
 
 public class DbCategoryConfiguration : IEntityTypeConfiguration<DbCategory>
