@@ -11,7 +11,7 @@ using DigitalOffice.Kernel.OpenApi.OperationFilters;
 using Microsoft.AspNetCore.Http;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace LT.DigitalOffice.DepartmentService.Controllers;
+namespace LT.DigitalOffice.SheduleService.Controllers;
 
 [Route("[controller]")]
 [Produces("application/json")]

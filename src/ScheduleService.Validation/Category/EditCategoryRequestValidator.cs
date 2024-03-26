@@ -4,6 +4,7 @@ using LT.DigitalOffice.ScheduleService.Data.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Enums;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Category;
 using LT.DigitalOffice.ScheduleService.Validation.Category.Interfaces;
+using LT.DigitalOffice.ScheduleService.Validation.Category.Resources;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Operations;
 using System;
@@ -47,8 +48,8 @@ public class EditCategoryRequestValidator : ExtendedEditRequestValidator<(Guid, 
       x => x == OperationType.Replace,
       new()
       {
-        {x  => !string.IsNullOrEmpty(x.value?.ToString().Trim()), "Empty Name."},
-        {x => x.value?.ToString().Length < 21, "Name is too long." },
+        {x  => !string.IsNullOrEmpty(x.value?.ToString().Trim()), CategoryRequestValidatorResource.EmptyName},
+        {x => x.value?.ToString().Length < 21, CategoryRequestValidatorResource.NameTooLong},
       }, CascadeMode.Stop);
 
     await AddFailureForPropertyIfNotAsync(
@@ -59,7 +60,7 @@ public class EditCategoryRequestValidator : ExtendedEditRequestValidator<(Guid, 
         {
           async x =>
             !await _categoryRepository.IsNameExistsAsync(x.value?.ToString(), workspaceId, categoryId),
-            "Name already exist."
+            CategoryRequestValidatorResource.ExistingName
         }
       });
 
@@ -72,7 +73,7 @@ public class EditCategoryRequestValidator : ExtendedEditRequestValidator<(Guid, 
           x => x == OperationType.Replace,
           new()
           {
-            {x => Enum.TryParse(x.value?.ToString(), out CategoryColor _), "Incorrect color."}
+            {x => Enum.TryParse(x.value?.ToString(), out CategoryColor _), CategoryRequestValidatorResource.IncorrectColor}
           });
 
     #endregion
@@ -84,7 +85,7 @@ public class EditCategoryRequestValidator : ExtendedEditRequestValidator<(Guid, 
       x => x == OperationType.Replace,
       new()
       {
-        {x => bool.TryParse(x.value?.ToString(), out bool _), "Incorrect format of IsActive."}
+        {x => bool.TryParse(x.value?.ToString(), out bool _), CategoryRequestValidatorResource.IncorrectIsActiveFormat}
       });
 
     #endregion

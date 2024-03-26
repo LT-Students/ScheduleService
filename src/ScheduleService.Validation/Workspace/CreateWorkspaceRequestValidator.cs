@@ -2,6 +2,7 @@
 using LT.DigitalOffice.ScheduleService.Data.Interfaces;
 using LT.DigitalOffice.ScheduleService.Models.Dto.Requests.Workspace;
 using LT.DigitalOffice.ScheduleService.Validation.Workspace.Interfaces;
+using LT.DigitalOffice.ScheduleService.Validation.Workspace.Resources;
 
 namespace LT.DigitalOffice.ScheduleService.Validation.Workspace;
 
@@ -12,8 +13,8 @@ public class CreateWorkspaceRequestValidator : AbstractValidator<CreateWorkspace
   {
     RuleFor(request => request.Name)
       .NotEmpty()
-      .MaximumLength(100).WithMessage("Name is too long.")
+      .MaximumLength(100).WithMessage(WorkspaceRequestValidatorResource.NameTooLong)
       .MustAsync(async (request, cancellationToken) => !await repository.IsNameExistsAsync(name: request, cancellationToken : cancellationToken))
-      .WithMessage("Name already exist.");
+      .WithMessage(WorkspaceRequestValidatorResource.ExistingName);
   }
 }
